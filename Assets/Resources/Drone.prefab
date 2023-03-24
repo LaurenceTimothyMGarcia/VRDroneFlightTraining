@@ -161,7 +161,7 @@ MonoBehaviour:
   directionofobj: {x: 0, y: 0, z: 0}
   drone: {fileID: 0}
   grabbableExtraEvents: {fileID: 0}
-  rollSpeed: 10
-  pitchSpeed: 10
-  yawSpeed: 10
-  throttlePower: 10
+  rollSpeed: 0
+  pitchSpeed: 0
+  yawSpeed: 0
+  throttlePower: 0
