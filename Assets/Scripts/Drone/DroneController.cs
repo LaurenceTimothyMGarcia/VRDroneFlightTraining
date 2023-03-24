@@ -60,39 +60,38 @@ public class DroneController : MonoBehaviour
     private float currentRollSpeed;
     private float currentPitchSpeed;
     private float currentYawSpeed;
-    private float currentThrottlePower;
+    private float currentThrottlePower = 0f; //added initilization
     private Rigidbody rb;
 
     //varaibles for propellers on drone (set parameters subject to change)
-    public float maxPropellerSpeed = 1000f;
-    public float minPropellerSpeed = 0f;
-    public float propellerSpeedIncrement = 10f;
-    public float currentPropellerSpeed = 0f;
+    public float maxThrottleSpeed = 1000f;
+    public float minThrottleSpeed = 0f;
+    public float throttleSpeedIncrement = 10f;
     public GameObject[] propellers;
 
     //updates the speed of the propeller based on input (Maybe can be moved to fixedupdate)
     void Update () {
         if (Input.GetKey(KeyCode.W)) {
-            IncreasePropellerSpeed();
+            IncreaseThrottleSpeed();
         }
         else if (Input.GetKey(KeyCode.S)) {
-            DecreasePropellerSpeed();
+            DecreaseThrottleSpeed();
         }
-        UpdatePropellerSpeed();
+        UpdateThrottleSpeed();
     }
 
     //Functions which control the speed increase, decreasem and update time.
-    void IncreasePropellerSpeed() {
-        currentPropellerSpeed += propellerSpeedIncrement * Time.deltaTime;
-        currentPropellerSpeed = Mathf.Clamp(currentPropellerSpeed, minPropellerSpeed, maxPropellerSpeed);
+    void IncreaseThrottleSpeed() {
+        currentThrottlePower += throttleSpeedIncrement * Time.deltaTime;
+        currentThrottlePower = Mathf.Clamp(currentThrottlePower, minThrottleSpeed, maxThrottleSpeed);
     }
-    void DecreasePropellerSpeed() {
-        currentPropellerSpeed -= propellerSpeedIncrement * Time.deltaTime;
-        currentPropellerSpeed = Mathf.Clamp(currentPropellerSpeed, minPropellerSpeed, maxPropellerSpeed);
+    void DecreaseThrottleSpeed() {
+        currentThrottlePower -= throttleSpeedIncrement * Time.deltaTime;
+        currentThrottlePower = Mathf.Clamp(currentThrottlePower, minThrottleSpeed, maxThrottleSpeed);
     }
-    void UpdatePropellerSpeed() {
+    void UpdateThrottleSpeed() {
         foreach (GameObject propeller in propellers) {
-            propeller.transform.Rotate(Vector3.up * currentPropellerSpeed * Time.deltaTime);
+            propeller.transform.Rotate(Vector3.up * currentThrottlePower * Time.deltaTime);
         }
     }
 
@@ -144,6 +143,14 @@ public class DroneController : MonoBehaviour
         //Yaw();
         //rb.rotation = rb.rotation * Quaternion.AngleAxis(yawSpeed * yawInput, Vector3.up);
 
+        //This code gets the horizontal input from the player (e.g., from the arrow keys or joystick) and rotates the drone around its y-axis based on that input.
+        float horizontal = Input.GetAxis("Horizontal");
+        transform.Rotate(0, horizontal * yawSpeed * Time.deltaTime, 0);
+
+        //This code gets the vertical input from the player (e.g., from the up/down arrow keys or joystick) and calculates the movement vector based on the drone's forward direction and the player's input. It then moves the drone's Rigidbody component in that direction using the MovePosition() function.
+        float vertical = Input.GetAxis("Vertical");
+        Vector3 movement = transform.forward * vertical * pitchSpeed * Time.deltaTime;
+        rb.MovePosition(rb.position + movement);
 
         // Wind
         Vector3 directionofobj = new Vector3(Random.Range(0, 10), Random.Range(0, 10), Random.Range(0, 10));
