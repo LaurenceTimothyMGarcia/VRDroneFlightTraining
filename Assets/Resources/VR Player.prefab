@@ -5373,6 +5373,8 @@ GameObject:
   - component: {fileID: 4400211150216581966}
   - component: {fileID: 4400211150216581967}
   - component: {fileID: 4400211150216581962}
+  - component: {fileID: 7471164615656271377}
+  - component: {fileID: 1756470441364021875}
   m_Layer: 31
   m_Name: Camera (head)
   m_TagString: MainCamera
@@ -5489,6 +5491,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: {fileID: 0}
+--- !u!114 &7471164615656271377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4400211150216581961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25662192fc626eb47a5e9eb586e7fd50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aboveClouds: 0
+  isAddionalCamera: 0
+  useGlobalRenderingSettings: 1
+  customRenderingSettings:
+    useVolumeClouds: 1
+    useVolumeLighting: 1
+    useDistanceBlur: 1
+    useFog: 1
+    customCloudsQuality: {fileID: 0}
+  currentFogType: 2
+  currentReprojectionPixelSize: 2
+  fogMat: {fileID: 0}
+  _ditheringTexture: {fileID: 0}
+  DefaultSpotCookie: {fileID: 0}
+  volumeLightMat: {fileID: 0}
+--- !u!114 &1756470441364021875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4400211150216581961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f89b6d3142b38d9409bf73b28187f9fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radialBlurIterations: 2
 --- !u!1 &4400211150459843140
 GameObject:
   m_ObjectHideFlags: 0
