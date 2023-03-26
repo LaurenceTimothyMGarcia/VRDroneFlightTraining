@@ -71,6 +71,7 @@ public class DroneController : MonoBehaviour
 
     //updates the speed of the propeller based on input (Maybe can be moved to fixedupdate)
     void Update () {
+        // Deals with animation
         if (Input.GetKey(KeyCode.W)) {
             IncreaseThrottleSpeed();
         }
