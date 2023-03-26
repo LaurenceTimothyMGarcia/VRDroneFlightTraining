@@ -17,13 +17,7 @@ public class WeatherTimeUI : MonoBehaviour
 
     void Start()
     {
-
         SetUpDropDowns();
-        if(EnviroSkyMgr.instance == null || !EnviroSkyMgr.instance.IsAvailable())
-            {
-                this.enabled = false;
-                return;
-            }
 
         if (WeatherTimeManager.Instance.CheckEnviroInstance())
         {
@@ -32,7 +26,6 @@ public class WeatherTimeUI : MonoBehaviour
         }
         EnviroSkyMgr.instance.OnWeatherChanged += (EnviroWeatherPreset type) =>
        {
-        Debug.Log("are we in here");
            UpdateWeather();
        };
 
@@ -74,7 +67,6 @@ public class WeatherTimeUI : MonoBehaviour
 
     IEnumerator setupDropdown(UnityEngine.UI.Dropdown dropdown, Enum enumType)
     {
-        Debug.Log("and set up the dumb dropdowns??");
         started = true;
         yield return new WaitForSeconds(0.1f);
 
@@ -84,7 +76,6 @@ public class WeatherTimeUI : MonoBehaviour
             UnityEngine.UI.Dropdown.OptionData optionData = new UnityEngine.UI.Dropdown.OptionData();
             optionData.text = Enum.GetName(type, i);
             dropdown.options.Add(optionData);
-            Debug.Log("iteration " + i);
         }
         yield return new WaitForSeconds(0.1f);
 
@@ -163,8 +154,8 @@ public class WeatherTimeUI : MonoBehaviour
 
     void SetUpDropDowns()
     {
-        StartCoroutine(setupDropdown(weatherDropdown, WeatherTimeManager.Instance.weather));
-        StartCoroutine(setupDropdown(timeDropdown, WeatherTimeManager.Instance.time));
+        setupDropdown(weatherDropdown, WeatherTimeManager.Instance.weather);
+        setupDropdown(timeDropdown, WeatherTimeManager.Instance.time);
 
         weatherDropdown.onValueChanged.AddListener(delegate
         {
