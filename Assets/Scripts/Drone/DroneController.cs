@@ -60,9 +60,40 @@ public class DroneController : MonoBehaviour
     private float currentRollSpeed;
     private float currentPitchSpeed;
     private float currentYawSpeed;
-    private float currentThrottlePower;
-
+    private float currentThrottlePower = 0f; //added initilization
     private Rigidbody rb;
+
+    //varaibles for propellers on drone (set parameters subject to change)
+    public float maxThrottleSpeed = 1000f;
+    public float minThrottleSpeed = 0f;
+    public float throttleSpeedIncrement = 10f;
+    public GameObject[] propellers;
+
+    //updates the speed of the propeller based on input (Maybe can be moved to fixedupdate)
+    void Update () {
+        if (Input.GetKey(KeyCode.W)) {
+            IncreaseThrottleSpeed();
+        }
+        else if (Input.GetKey(KeyCode.S)) {
+            DecreaseThrottleSpeed();
+        }
+        UpdateThrottleSpeed();
+    }
+
+    //Functions which control the speed increase, decreasem and update time.
+    void IncreaseThrottleSpeed() {
+        currentThrottlePower += throttleSpeedIncrement * Time.deltaTime;
+        currentThrottlePower = Mathf.Clamp(currentThrottlePower, minThrottleSpeed, maxThrottleSpeed);
+    }
+    void DecreaseThrottleSpeed() {
+        currentThrottlePower -= throttleSpeedIncrement * Time.deltaTime;
+        currentThrottlePower = Mathf.Clamp(currentThrottlePower, minThrottleSpeed, maxThrottleSpeed);
+    }
+    void UpdateThrottleSpeed() {
+        foreach (GameObject propeller in propellers) {
+            propeller.transform.Rotate(Vector3.up * currentThrottlePower * Time.deltaTime);
+        }
+    }
 
     // Start is called before the first frame update
     // Initialize the input drone controls
@@ -79,8 +110,8 @@ public class DroneController : MonoBehaviour
 
         // Listener for when the controller is held by 2 hands or not
         // COMMENTOUT TESTNOVR
-        grabbableExtraEvents.OnTwoHandedGrab.AddListener(ActivateDroneMovement);
-        grabbableExtraEvents.OnTwoHandedRelease.AddListener(ActivatePlayerMovement);
+        /*grabbableExtraEvents.OnTwoHandedGrab.AddListener(ActivateDroneMovement);
+        grabbableExtraEvents.OnTwoHandedRelease.AddListener(ActivatePlayerMovement);*/
 
         // Wind related variables
         wz = GetComponent<Rigidbody>(); //windarea 
@@ -112,6 +143,14 @@ public class DroneController : MonoBehaviour
         //Yaw();
         //rb.rotation = rb.rotation * Quaternion.AngleAxis(yawSpeed * yawInput, Vector3.up);
 
+        //This code gets the horizontal input from the player (e.g., from the arrow keys or joystick) and rotates the drone around its y-axis based on that input.
+        float horizontal = Input.GetAxis("Horizontal");
+        transform.Rotate(0, horizontal * yawSpeed * Time.deltaTime, 0);
+
+        //This code gets the vertical input from the player (e.g., from the up/down arrow keys or joystick) and calculates the movement vector based on the drone's forward direction and the player's input. It then moves the drone's Rigidbody component in that direction using the MovePosition() function.
+        float vertical = Input.GetAxis("Vertical");
+        Vector3 movement = transform.forward * vertical * pitchSpeed * Time.deltaTime;
+        rb.MovePosition(rb.position + movement);
 
         // Wind
         Vector3 directionofobj = new Vector3(Random.Range(0, 10), Random.Range(0, 10), Random.Range(0, 10));
@@ -164,7 +203,7 @@ public class DroneController : MonoBehaviour
     // Drone movement detection if controller has been grabbed or not
     // If controller is grabbed with 2 hands then player stops moving and drone moves, vice versa
     // COMMENTOUT TESTNOVR
-    void ActivateDroneMovement(Hand hand, Grabbable grab)
+    /*void ActivateDroneMovement(Hand hand, Grabbable grab)
     {
         Debug.Log("Two-handed grab detected!");
 
@@ -178,7 +217,7 @@ public class DroneController : MonoBehaviour
 
         InputManager.Instance.playerActions.DroneControls.Disable();
         InputManager.Instance.playerActions.DefaultControls.Enable();
-    }
+    }*/
 
     // Wind related PHysics
     //if enter and exit windarea
@@ -307,9 +346,9 @@ public class DroneController : MonoBehaviour
 
     // Destroys event listener for controller
     // COMMENTOUT TESTNOVR
-    public void OnDestroy()
+    /*public void OnDestroy()
     {
         grabbableExtraEvents.OnTwoHandedGrab.RemoveListener(ActivateDroneMovement);
         grabbableExtraEvents.OnTwoHandedRelease.RemoveListener(ActivatePlayerMovement);
-    }
+    }*/
 }
