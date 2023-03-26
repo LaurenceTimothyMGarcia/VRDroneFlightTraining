@@ -6065,14 +6065,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
-<<<<<<< HEAD
---- !u!1 &416851257 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6990955878230915050, guid: f41aad973398d41429ea2dd36484443c, type: 3}
-  m_PrefabInstance: {fileID: 1518524435}
-  m_PrefabAsset: {fileID: 0}
-=======
->>>>>>> 3508d9d86e7a2eb7837ae3c1498befaa16ff9a3a
 --- !u!1 &476214112
 GameObject:
   m_ObjectHideFlags: 0
@@ -8155,19 +8147,11 @@ MonoBehaviour:
   LST: 641.30035
   lastHourUpdate: 12
   hourTime: 0
-<<<<<<< HEAD
-  cloudAnim: {x: 0.1, y: 0.025164023, z: -0.21526575}
-  cloudFlatBaseAnim: {x: 0, y: -0.41014883}
-  cloudFlatDetailAnim: {x: 0, y: 0.36678597}
-  cloudAnimNonScaled: {x: 0, y: -2.4103124}
-  cirrusAnim: {x: 0, y: 0.97163045}
-=======
   cloudAnim: {x: 0.1, y: 0.23917422, z: -0.8943499}
   cloudFlatBaseAnim: {x: 0, y: -0.5882367}
   cloudFlatDetailAnim: {x: 0, y: -0.3474232}
   cloudAnimNonScaled: {x: 0, y: -2.5883944}
   cirrusAnim: {x: 0, y: 0.8956749}
->>>>>>> 3508d9d86e7a2eb7837ae3c1498befaa16ff9a3a
   windIntensity: 0.27499998
   shadowIntensityMod: 0
   interiorMode: 0
@@ -8307,15 +8291,9 @@ MonoBehaviour:
   auroraIntensity: 0
   currentActiveCloudsQualityPreset: {fileID: 11400000, guid: a836f7605a4cd2b46977d5caf63945fc, type: 2}
   cloudsRenderTarget: {fileID: 0}
-<<<<<<< HEAD
-  weatherMap: {fileID: 1228405806}
-  satRenderTarget: {fileID: 0}
-  cloudShadowMap: {fileID: 1782446088}
-=======
   weatherMap: {fileID: 1706917971}
   satRenderTarget: {fileID: 0}
   cloudShadowMap: {fileID: 2058268154}
->>>>>>> 3508d9d86e7a2eb7837ae3c1498befaa16ff9a3a
   skyMat: {fileID: 178638639}
   skyReflectionMat: {fileID: 0}
   cloudsQualityList:
@@ -24773,8 +24751,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!28 &1347477711
 Texture2D:
   m_ObjectHideFlags: 0
@@ -24822,7 +24798,6 @@ Texture2D:
     offset: 0
     size: 0
     path: 
->>>>>>> 3508d9d86e7a2eb7837ae3c1498befaa16ff9a3a
 --- !u!1 &1395095949
 GameObject:
   m_ObjectHideFlags: 0
@@ -25889,21 +25864,13 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-<<<<<<< HEAD
---- !u!84 &1638272756
-=======
 --- !u!84 &1706917971
->>>>>>> 3508d9d86e7a2eb7837ae3c1498befaa16ff9a3a
 RenderTexture:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_Name: Enviro Reflection Final Cubemap
-=======
   m_Name: 
->>>>>>> 3508d9d86e7a2eb7837ae3c1498befaa16ff9a3a
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
@@ -25911,16 +25878,6 @@ RenderTexture:
   m_DownscaleFallback: 0
   m_IsAlphaChannelOptional: 0
   serializedVersion: 3
-<<<<<<< HEAD
-  m_Width: 256
-  m_Height: 256
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthFormat: 1
-  m_ColorFormat: 48
-  m_MipMap: 1
-  m_GenerateMips: 0
-=======
   m_Width: 512
   m_Height: 512
   m_AntiAliasing: 1
@@ -25929,22 +25886,12 @@ RenderTexture:
   m_ColorFormat: 48
   m_MipMap: 0
   m_GenerateMips: 1
->>>>>>> 3508d9d86e7a2eb7837ae3c1498befaa16ff9a3a
   m_SRGB: 0
   m_UseDynamicScale: 0
   m_BindMS: 0
   m_EnableCompatibleFormat: 1
   m_TextureSettings:
     serializedVersion: 2
-<<<<<<< HEAD
-    m_FilterMode: 2
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 4
-=======
     m_FilterMode: 1
     m_Aniso: 1
     m_MipBias: 0
@@ -25952,7 +25899,6 @@ RenderTexture:
     m_WrapV: 0
     m_WrapW: 0
   m_Dimension: 2
->>>>>>> 3508d9d86e7a2eb7837ae3c1498befaa16ff9a3a
   m_VolumeDepth: 1
 --- !u!1 &1772561251
 GameObject:
@@ -26182,11 +26128,7 @@ ReflectionProbe:
   m_RenderDynamicObjects: 0
   m_UseOcclusionCulling: 1
   m_Importance: 1
-<<<<<<< HEAD
-  m_CustomBakedTexture: {fileID: 1638272756}
-=======
   m_CustomBakedTexture: {fileID: 1459476632}
->>>>>>> 3508d9d86e7a2eb7837ae3c1498befaa16ff9a3a
 --- !u!114 &1921856407
 MonoBehaviour:
   m_ObjectHideFlags: 0
