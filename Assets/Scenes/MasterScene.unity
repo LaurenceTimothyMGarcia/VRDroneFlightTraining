@@ -477,7 +477,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100572553}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.9, z: -0.57}
+  m_LocalPosition: {x: 0, y: 2.1299999, z: -0.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 531851821}
@@ -1132,7 +1132,7 @@ MonoBehaviour:
   timeDropdown: {fileID: 2003885015}
   weatherText: {fileID: 1016465678}
   timeText: {fileID: 64642767}
-  drone: {fileID: 1518524436}
+  drone: {fileID: 416851257}
   rb: {fileID: 0}
 --- !u!114 &312677147
 MonoBehaviour:
@@ -6066,7 +6066,6 @@ MonoBehaviour:
       m_Calls: []
   m_IsOn: 1
 <<<<<<< HEAD
-<<<<<<< HEAD
 --- !u!1 &416851257 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6990955878230915050, guid: f41aad973398d41429ea2dd36484443c, type: 3}
@@ -6074,44 +6073,6 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 =======
 >>>>>>> 3508d9d86e7a2eb7837ae3c1498befaa16ff9a3a
-=======
---- !u!84 &465015279
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 3
-  m_Width: 2048
-  m_Height: 2048
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthFormat: 0
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 0
-    m_WrapV: 0
-    m_WrapW: 0
-  m_Dimension: 2
-  m_VolumeDepth: 1
->>>>>>> parent of 61ba193 (Fixed dropdown setup nongenerating error)
 --- !u!1 &476214112
 GameObject:
   m_ObjectHideFlags: 0
@@ -8195,7 +8156,6 @@ MonoBehaviour:
   lastHourUpdate: 12
   hourTime: 0
 <<<<<<< HEAD
-<<<<<<< HEAD
   cloudAnim: {x: 0.1, y: 0.025164023, z: -0.21526575}
   cloudFlatBaseAnim: {x: 0, y: -0.41014883}
   cloudFlatDetailAnim: {x: 0, y: 0.36678597}
@@ -8208,13 +8168,6 @@ MonoBehaviour:
   cloudAnimNonScaled: {x: 0, y: -2.5883944}
   cirrusAnim: {x: 0, y: 0.8956749}
 >>>>>>> 3508d9d86e7a2eb7837ae3c1498befaa16ff9a3a
-=======
-  cloudAnim: {x: 0.1, y: -0.3256507, z: 0.2678037}
-  cloudFlatBaseAnim: {x: 0, y: -0.24463329}
-  cloudFlatDetailAnim: {x: 0, y: -0.97303253}
-  cloudAnimNonScaled: {x: 0, y: -2.2447884}
-  cirrusAnim: {x: 0, y: -0.95775783}
->>>>>>> parent of 61ba193 (Fixed dropdown setup nongenerating error)
   windIntensity: 0.27499998
   shadowIntensityMod: 0
   interiorMode: 0
@@ -8355,7 +8308,6 @@ MonoBehaviour:
   currentActiveCloudsQualityPreset: {fileID: 11400000, guid: a836f7605a4cd2b46977d5caf63945fc, type: 2}
   cloudsRenderTarget: {fileID: 0}
 <<<<<<< HEAD
-<<<<<<< HEAD
   weatherMap: {fileID: 1228405806}
   satRenderTarget: {fileID: 0}
   cloudShadowMap: {fileID: 1782446088}
@@ -8364,11 +8316,6 @@ MonoBehaviour:
   satRenderTarget: {fileID: 0}
   cloudShadowMap: {fileID: 2058268154}
 >>>>>>> 3508d9d86e7a2eb7837ae3c1498befaa16ff9a3a
-=======
-  weatherMap: {fileID: 1901309522}
-  satRenderTarget: {fileID: 0}
-  cloudShadowMap: {fileID: 465015279}
->>>>>>> parent of 61ba193 (Fixed dropdown setup nongenerating error)
   skyMat: {fileID: 178638639}
   skyReflectionMat: {fileID: 0}
   cloudsQualityList:
@@ -14912,7 +14859,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1070615973}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 476214114}
@@ -19685,6 +19632,42 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!84 &1228405806
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 3
+  m_Width: 512
+  m_Height: 512
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthFormat: 0
+  m_ColorFormat: 48
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 0
+    m_WrapV: 0
+    m_WrapW: 0
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1252816593
 GameObject:
   m_ObjectHideFlags: 0
@@ -24791,30 +24774,20 @@ Transform:
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 --- !u!28 &1347477711
 Texture2D:
-=======
---- !u!84 &1389143464
-RenderTexture:
->>>>>>> parent of 61ba193 (Fixed dropdown setup nongenerating error)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_Name: 
-=======
-  m_Name: Enviro Reflection Final Cubemap
->>>>>>> parent of 61ba193 (Fixed dropdown setup nongenerating error)
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
   m_ForcedFallbackFormat: 4
   m_DownscaleFallback: 0
   m_IsAlphaChannelOptional: 0
-<<<<<<< HEAD
   serializedVersion: 2
   m_Width: 8
   m_Height: 8
@@ -24850,31 +24823,6 @@ RenderTexture:
     size: 0
     path: 
 >>>>>>> 3508d9d86e7a2eb7837ae3c1498befaa16ff9a3a
-=======
-  serializedVersion: 3
-  m_Width: 256
-  m_Height: 256
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthFormat: 1
-  m_ColorFormat: 48
-  m_MipMap: 1
-  m_GenerateMips: 0
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 2
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 4
-  m_VolumeDepth: 1
->>>>>>> parent of 61ba193 (Fixed dropdown setup nongenerating error)
 --- !u!1 &1395095949
 GameObject:
   m_ObjectHideFlags: 0
@@ -25317,7 +25265,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1479785531}
   m_LocalRotation: {x: 0.551998, y: -0.016934294, z: 0.011213674, w: 0.8335981}
-  m_LocalPosition: {x: -0.02, y: -0.6, z: 0.26}
+  m_LocalPosition: {x: -0.1, y: 0.21, z: 2.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -25410,7 +25358,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1486573032}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: -4.37, y: 5.05, z: -1.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -25607,11 +25555,6 @@ PrefabInstance:
       objectReference: {fileID: 651968877}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f41aad973398d41429ea2dd36484443c, type: 3}
---- !u!1 &1518524436 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6990955878230915050, guid: f41aad973398d41429ea2dd36484443c, type: 3}
-  m_PrefabInstance: {fileID: 1518524435}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1537739237
 GameObject:
   m_ObjectHideFlags: 0
@@ -25947,7 +25890,6 @@ AudioSource:
     m_PostInfinity: 2
     m_RotationOrder: 0
 <<<<<<< HEAD
-<<<<<<< HEAD
 --- !u!84 &1638272756
 =======
 --- !u!84 &1706917971
@@ -26012,8 +25954,6 @@ RenderTexture:
   m_Dimension: 2
 >>>>>>> 3508d9d86e7a2eb7837ae3c1498befaa16ff9a3a
   m_VolumeDepth: 1
-=======
->>>>>>> parent of 61ba193 (Fixed dropdown setup nongenerating error)
 --- !u!1 &1772561251
 GameObject:
   m_ObjectHideFlags: 0
@@ -26050,6 +25990,42 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 28}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!84 &1782446088
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 3
+  m_Width: 2048
+  m_Height: 2048
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthFormat: 0
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 0
+    m_WrapV: 0
+    m_WrapW: 0
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1796574777
 GameObject:
   m_ObjectHideFlags: 0
@@ -26142,42 +26118,6 @@ Transform:
   m_Father: {fileID: 100572554}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &1901309522
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 3
-  m_Width: 512
-  m_Height: 512
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthFormat: 0
-  m_ColorFormat: 48
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 0
-    m_WrapV: 0
-    m_WrapW: 0
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1921856404
 GameObject:
   m_ObjectHideFlags: 0
@@ -26243,14 +26183,10 @@ ReflectionProbe:
   m_UseOcclusionCulling: 1
   m_Importance: 1
 <<<<<<< HEAD
-<<<<<<< HEAD
   m_CustomBakedTexture: {fileID: 1638272756}
 =======
   m_CustomBakedTexture: {fileID: 1459476632}
 >>>>>>> 3508d9d86e7a2eb7837ae3c1498befaa16ff9a3a
-=======
-  m_CustomBakedTexture: {fileID: 1389143464}
->>>>>>> parent of 61ba193 (Fixed dropdown setup nongenerating error)
 --- !u!114 &1921856407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26382,7 +26318,7 @@ GameObject:
   - component: {fileID: 2003885013}
   - component: {fileID: 2003885015}
   m_Layer: 5
-  m_Name: Test time
+  m_Name: Time Dropdown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
