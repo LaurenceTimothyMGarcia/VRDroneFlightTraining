@@ -129,6 +129,7 @@ public class DroneController : MonoBehaviour
         // Drone Movement
         MoveDrone();
         SpeedControl();
+        // DroneSound(); //function call for Drone sound in propeller
         //rotation method (Foward movement needs to be replaced here with the correct command or the tilt method)
         //Yaw();
         //rb.rotation = rb.rotation * Quaternion.AngleAxis(yawSpeed * yawInput, Vector3.up);
@@ -337,6 +338,13 @@ public class DroneController : MonoBehaviour
             propeller.transform.Rotate(Vector3.up * currentThrottlePower * Time.deltaTime);
         }
     }
+
+
+    // //Function for Drone Sound using imported sound in propellers
+    // private AudioSource droneSound;//variable for drone sound
+    // void DroneSound(){
+    //     droneSound.pitch = 1 + (drone.velocity.magnitude / 100);//drone sound will change based speed of drone.
+    // }//Honestly not sure what to put instead of velocity here.
 
     //Variables for desired rotation and rotation amount for keys
     // Use YawInput to determine if its rotating left or right
