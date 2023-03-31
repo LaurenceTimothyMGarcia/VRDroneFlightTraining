@@ -69,33 +69,6 @@ public class DroneController : MonoBehaviour
     public float throttleSpeedIncrement = 10f;
     public GameObject[] propellers;
 
-    //updates the speed of the propeller based on input (Maybe can be moved to fixedupdate)
-    void Update () {
-        // Deals with animation
-        if (Input.GetKey(KeyCode.W)) {
-            IncreaseThrottleSpeed();
-        }
-        else if (Input.GetKey(KeyCode.S)) {
-            DecreaseThrottleSpeed();
-        }
-        UpdateThrottleSpeed();
-    }
-
-    //Functions which control the speed increase, decreasem and update time.
-    void IncreaseThrottleSpeed() {
-        currentThrottlePower += throttleSpeedIncrement * Time.deltaTime;
-        currentThrottlePower = Mathf.Clamp(currentThrottlePower, minThrottleSpeed, maxThrottleSpeed);
-    }
-    void DecreaseThrottleSpeed() {
-        currentThrottlePower -= throttleSpeedIncrement * Time.deltaTime;
-        currentThrottlePower = Mathf.Clamp(currentThrottlePower, minThrottleSpeed, maxThrottleSpeed);
-    }
-    void UpdateThrottleSpeed() {
-        foreach (GameObject propeller in propellers) {
-            propeller.transform.Rotate(Vector3.up * currentThrottlePower * Time.deltaTime);
-        }
-    }
-
     // Start is called before the first frame update
     // Initialize the input drone controls
     void Start()
@@ -133,6 +106,19 @@ public class DroneController : MonoBehaviour
         InputManager.Instance.playerActions.DroneControls.HorizontalMovement.canceled += OnRightStick;
     }
 
+    
+    //updates the speed of the propeller based on input (Maybe can be moved to fixedupdate)
+    void Update () {
+        // Deals with animation
+        if (throttleInput > 0) {
+            IncreaseThrottleSpeed();
+        }
+        else if (throttleInput < 0) {
+            DecreaseThrottleSpeed();
+        }
+        
+        UpdateThrottleSpeed();
+    }
 
     // Any physics related drone movement goes here
     private void FixedUpdate()
@@ -144,14 +130,14 @@ public class DroneController : MonoBehaviour
         //Yaw();
         //rb.rotation = rb.rotation * Quaternion.AngleAxis(yawSpeed * yawInput, Vector3.up);
 
-        //This code gets the horizontal input from the player (e.g., from the arrow keys or joystick) and rotates the drone around its y-axis based on that input.
-        float horizontal = Input.GetAxis("Horizontal");
-        transform.Rotate(0, horizontal * yawSpeed * Time.deltaTime, 0);
+        // //This code gets the horizontal input from the player (e.g., from the arrow keys or joystick) and rotates the drone around its y-axis based on that input.
+        // float horizontal = Input.GetAxis("Horizontal");
+        // transform.Rotate(0, horizontal * yawSpeed * Time.deltaTime, 0);
 
-        //This code gets the vertical input from the player (e.g., from the up/down arrow keys or joystick) and calculates the movement vector based on the drone's forward direction and the player's input. It then moves the drone's Rigidbody component in that direction using the MovePosition() function.
-        float vertical = Input.GetAxis("Vertical");
-        Vector3 movement = transform.forward * vertical * pitchSpeed * Time.deltaTime;
-        rb.MovePosition(rb.position + movement);
+        // //This code gets the vertical input from the player (e.g., from the up/down arrow keys or joystick) and calculates the movement vector based on the drone's forward direction and the player's input. It then moves the drone's Rigidbody component in that direction using the MovePosition() function.
+        // float vertical = Input.GetAxis("Vertical");
+        // Vector3 movement = transform.forward * vertical * pitchSpeed * Time.deltaTime;
+        // rb.MovePosition(rb.position + movement);
 
         // Wind
         Vector3 directionofobj = new Vector3(Random.Range(0, 10), Random.Range(0, 10), Random.Range(0, 10));
@@ -331,6 +317,21 @@ public class DroneController : MonoBehaviour
             {
                 rb.AddForce(new Vector3(0, throttlePower, 0), ForceMode.Force);
             }
+        }
+    }
+
+    //Functions which control the speed increase, decreasem and update time.
+    void IncreaseThrottleSpeed() {
+        currentThrottlePower += throttleSpeedIncrement * Time.deltaTime;
+        currentThrottlePower = Mathf.Clamp(currentThrottlePower, minThrottleSpeed, maxThrottleSpeed);
+    }
+    void DecreaseThrottleSpeed() {
+        currentThrottlePower -= throttleSpeedIncrement * Time.deltaTime;
+        currentThrottlePower = Mathf.Clamp(currentThrottlePower, minThrottleSpeed, maxThrottleSpeed);
+    }
+    void UpdateThrottleSpeed() {
+        foreach (GameObject propeller in propellers) {
+            propeller.transform.Rotate(Vector3.up * currentThrottlePower * Time.deltaTime);
         }
     }
 
