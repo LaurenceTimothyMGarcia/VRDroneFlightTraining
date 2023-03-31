@@ -21,6 +21,9 @@ public class DroneController : MonoBehaviour
     [Header("Controller")]
     public GrabbableExtraEvents grabbableExtraEvents;
 
+    [Header("Orientation")]
+    public Transform direction;
+
     //Values of input
     private Vector2 rightStick;
     private Vector2 leftStick;
@@ -116,7 +119,7 @@ public class DroneController : MonoBehaviour
         else if (throttleInput < 0) {
             DecreaseThrottleSpeed();
         }
-        
+
         UpdateThrottleSpeed();
     }
 
@@ -236,7 +239,10 @@ public class DroneController : MonoBehaviour
     private float targetAngle;
     private void MoveDrone()
     {
-        Vector3 movement = new Vector3((rollInput * rollSpeed), (throttleInput * throttlePower), (pitchInput * pitchSpeed));
+        // Adds direction into the input
+        Vector3 moveDir = rollInput * direction.right + pitchInput * direction.forward;
+        // Movement direction
+        Vector3 movement = new Vector3((moveDir.normalized.x * rollSpeed * 2f), (throttleInput * throttlePower), (moveDir.normalized.z * pitchSpeed * 2f));
 
         //Tilt calculations
         tiltAmountFoward = Mathf.SmoothDamp(tiltAmountFoward, 20 * pitchInput, ref tiltVelocityFoward, 0.5f); //tilting method and speed which can be changed
@@ -249,9 +255,6 @@ public class DroneController : MonoBehaviour
         rb.rotation = Quaternion.Euler(new Vector3(tiltAmountFoward, currentYawSpeed, tiltAmountHorizontal));
 
         //Debug.Log(rb.rotation);
-
-        //Need to apply the current rotation of the drone to the direction of the movement, then we can get what we need
-        movement = new Vector3(movement.x /*multiply drone rotation here*/, movement.y, movement.z /*multiply drone rotation here*/);
         rb.AddForce(movement, ForceMode.Force);
     }
 
