@@ -180,8 +180,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d10bd7948e05c3a44b40bde1db7b2ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strength: 3
-  directionofobj: {x: 1, y: 0, z: 0}
+  WindStrengthMin: 0
+  WindStrengthMax: 5
+  radius: 100
+  windDirection: {x: 0, y: 0, z: -1}
 --- !u!1001 &488436350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -485,7 +487,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &2048828203
+--- !u!1001 &2050443415
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -502,7 +504,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6990955878230915051, guid: f41aad973398d41429ea2dd36484443c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.91
+      value: -1.1
       objectReference: {fileID: 0}
     - target: {fileID: 6990955878230915051, guid: f41aad973398d41429ea2dd36484443c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -510,7 +512,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6990955878230915051, guid: f41aad973398d41429ea2dd36484443c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -17.7
+      value: 14.6
       objectReference: {fileID: 0}
     - target: {fileID: 6990955878230915051, guid: f41aad973398d41429ea2dd36484443c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -540,61 +542,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6990955878230915052, guid: f41aad973398d41429ea2dd36484443c, type: 3}
-      propertyPath: windZone
-      value: 
-      objectReference: {fileID: 123280889}
-    - target: {fileID: 6990955878230915052, guid: f41aad973398d41429ea2dd36484443c, type: 3}
-      propertyPath: yawSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6990955878230915052, guid: f41aad973398d41429ea2dd36484443c, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6990955878230915052, guid: f41aad973398d41429ea2dd36484443c, type: 3}
-      propertyPath: rollSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6990955878230915052, guid: f41aad973398d41429ea2dd36484443c, type: 3}
-      propertyPath: inWindZone
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6990955878230915052, guid: f41aad973398d41429ea2dd36484443c, type: 3}
-      propertyPath: pitchSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6990955878230915052, guid: f41aad973398d41429ea2dd36484443c, type: 3}
-      propertyPath: throttlePower
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6990955878230915055, guid: f41aad973398d41429ea2dd36484443c, type: 3}
       propertyPath: drone
       value: 
       objectReference: {fileID: 11400000, guid: 9985743efe7853649873e179e6712a05, type: 2}
-    - target: {fileID: 6990955878230915055, guid: f41aad973398d41429ea2dd36484443c, type: 3}
-      propertyPath: windZone
-      value: 
-      objectReference: {fileID: 123280889}
-    - target: {fileID: 6990955878230915055, guid: f41aad973398d41429ea2dd36484443c, type: 3}
-      propertyPath: yawSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6990955878230915055, guid: f41aad973398d41429ea2dd36484443c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6990955878230915055, guid: f41aad973398d41429ea2dd36484443c, type: 3}
-      propertyPath: rollSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6990955878230915055, guid: f41aad973398d41429ea2dd36484443c, type: 3}
-      propertyPath: pitchSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6990955878230915055, guid: f41aad973398d41429ea2dd36484443c, type: 3}
-      propertyPath: throttlePower
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f41aad973398d41429ea2dd36484443c, type: 3}

@@ -10,8 +10,12 @@ public class DroneController : MonoBehaviour
     // wind implementation
     public bool inWindZone = false;
     public GameObject windZone;
-    private Rigidbody wz;
-    public Vector3 directionofobj;
+    Rigidbody wz;
+    float windStrength;
+    RaycastHit hit;
+    Collider[] hitColliders;
+    public Vector3 windDirection = new Vector3(0, 0, -1);
+    // public Vector3 directionofobj;
 
     [Header("Drone type")]
     public DroneType drone;
@@ -144,17 +148,28 @@ public class DroneController : MonoBehaviour
         // rb.MovePosition(rb.position + movement);
 
         // Wind
-        Vector3 directionofobj = new Vector3(Random.Range(0, 10), Random.Range(0, 10), Random.Range(0, 10));
+        //Vector3 directionofobj = new Vector3(Random.Range(0, 10), Random.Range(0, 10), Random.Range(0, 10));
 
-        if (inWindZone)
+        //if (inWindZone)
+        // {
+        //  int max = 5;
+        // int min = -5;
+        // Vector3 directionofwobj = new Vector3(Random.Range(min, max), Random.Range(min, max), Random.Range(min, max));
+        // wz.AddForce(directionofwobj * windZone.GetComponent<windarea>().strength);
+
+        //}
+        windStrength = Random.Range(windZone.GetComponent<windarea>().WindStrengthMin, (windZone.GetComponent<windarea>().WindStrengthMax));
+
+        hitColliders = Physics.OverlapSphere(transform.position, (windZone.GetComponent<windarea>().radius));
+
+        for (int i = 0; i < hitColliders.Length; i++)
         {
-            int max = 5;
-            int min = -5;
-            Vector3 directionofwobj = new Vector3(Random.Range(min, max), Random.Range(min, max), Random.Range(min, max));
-            wz.AddForce(directionofwobj * windZone.GetComponent<windarea>().strength);
-            
+            if (wz = hitColliders[i].GetComponent<Rigidbody>())
+                if (Physics.Raycast(transform.position, wz.position - transform.position, out hit))
+                    if (hit.transform.GetComponent<Rigidbody>())
+                        wz.AddRelativeForce(windDirection * windStrength, ForceMode.Acceleration);
         }
-        
+
     }
 
     public void OnRightStick(InputAction.CallbackContext value)
@@ -212,7 +227,7 @@ public class DroneController : MonoBehaviour
 
     // Wind related PHysics
     //if enter and exit windarea
-    void OnTriggerEnter(Collider colli)
+   void OnTriggerEnter(Collider colli)
     {
         if (colli.gameObject.tag == "wind area")
         {
