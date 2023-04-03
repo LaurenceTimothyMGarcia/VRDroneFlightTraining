@@ -11,10 +11,11 @@ public class DroneController : MonoBehaviour
     public bool inWindZone = false;
     public GameObject windZone;
     Rigidbody wz;
-    float windStrength;
-    RaycastHit hit;
-    Collider[] hitColliders;
-    public Vector3 windDirection = new Vector3(0, 0, -1);
+    [SerializeField] private float windStrength = 10f;
+    //float windStrength;
+    //RaycastHit hit;
+    //Collider[] hitColliders;
+    //public Vector3 windDirection = new Vector3(0, 0, -1);
     // public Vector3 directionofobj;
 
     [Header("Drone type")]
@@ -158,16 +159,22 @@ public class DroneController : MonoBehaviour
         // wz.AddForce(directionofwobj * windZone.GetComponent<windarea>().strength);
 
         //}
-        windStrength = Random.Range(windZone.GetComponent<windarea>().WindStrengthMin, (windZone.GetComponent<windarea>().WindStrengthMax));
-
-        hitColliders = Physics.OverlapSphere(transform.position, (windZone.GetComponent<windarea>().radius));
-
-        for (int i = 0; i < hitColliders.Length; i++)
+        if (inWindZone)
         {
-            if (wz = hitColliders[i].GetComponent<Rigidbody>())
-                if (Physics.Raycast(transform.position, wz.position - transform.position, out hit))
-                    if (hit.transform.GetComponent<Rigidbody>())
-                        wz.AddRelativeForce(windDirection * windStrength, ForceMode.Acceleration);
+            //windStrength = Random.Range(windZone.GetComponent<windarea>().WindStrengthMin, (windZone.GetComponent<windarea>().WindStrengthMax));
+
+            //hitColliders = Physics.OverlapSphere(transform.position, (windZone.GetComponent<windarea>().radius));
+
+            //for (int i = 0; i < hitColliders.Length; i++)
+            //{
+            //if (wz = hitColliders[i].GetComponent<Rigidbody>())
+            //if (Physics.Raycast(transform.position, wz.position - transform.position, out hit))
+            //if (hit.transform.GetComponent<Rigidbody>())
+            // wz.AddRelativeForce(windDirection * windStrength, ForceMode.Acceleration);
+            //}
+            Vector3 windDirection = new Vector3(Random.Range(-20f, 20f), Random.Range(-20f, 20f), Random.Range(-20f, 20f));
+            rb.AddForce(windDirection * windZone.GetComponent<windarea>().windStrength);
+
         }
 
     }
