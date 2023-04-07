@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 205546519}
   - component: {fileID: 205546521}
-  - component: {fileID: 205546520}
   m_Layer: 0
   m_Name: Drone Camera
   m_TagString: MainCamera
@@ -155,14 +154,6 @@ Transform:
   m_Father: {fileID: 1300264459}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &205546520
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 205546518}
-  m_Enabled: 1
 --- !u!20 &205546521
 Camera:
   m_ObjectHideFlags: 0

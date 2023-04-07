@@ -43,12 +43,12 @@ GameObject:
   - component: {fileID: 6990955876776454233}
   - component: {fileID: 6990955876776454232}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Debug Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6990955876776454235
 Transform:
   m_ObjectHideFlags: 0
