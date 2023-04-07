@@ -417,7 +417,7 @@ GameObject:
   - component: {fileID: 4664394365965941132}
   - component: {fileID: 6503423891457349850}
   m_Layer: 0
-  m_Name: main_motor_prop3_polySurface6
+  m_Name: SouthWestProp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1632,7 +1632,7 @@ GameObject:
   - component: {fileID: 244176551155520731}
   - component: {fileID: 1492372228795278675}
   m_Layer: 0
-  m_Name: main_motor_prop3_polySurface9
+  m_Name: NorthWestProp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1713,7 +1713,7 @@ GameObject:
   - component: {fileID: 5047134481615605787}
   - component: {fileID: 4585581608236282595}
   m_Layer: 0
-  m_Name: main_motor_prop1_polySurface6
+  m_Name: NorthEastProp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3820,7 +3820,7 @@ GameObject:
   - component: {fileID: 6628099242277249678}
   - component: {fileID: 7873735622788995392}
   m_Layer: 0
-  m_Name: main_motor_prop2_polySurface6
+  m_Name: SouthEastProp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

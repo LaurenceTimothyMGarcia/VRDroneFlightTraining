@@ -70,6 +70,7 @@ public class DroneController : MonoBehaviour
     private float currentYawSpeed;
     private float currentThrottlePower = 0f; //added initilization
     private Rigidbody rb;
+    private GameObject droneModel;
 
     //varaibles for propellers on drone (set parameters subject to change)
     public float maxThrottleSpeed = 1000f;
@@ -106,6 +107,8 @@ public class DroneController : MonoBehaviour
         pitchSpeed = drone.pitchSpeed;
         yawSpeed = drone.yawSpeed;
         throttlePower = drone.throttlePower;
+
+        //propellers[0] = GameObject.transform.Find("NorthWestProp");
 
         // Initializes input controls
         InputManager.Instance.playerActions.DroneControls.VerticalMovementRotation.performed += OnLeftStick;
