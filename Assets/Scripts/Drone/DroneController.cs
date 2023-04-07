@@ -10,8 +10,13 @@ public class DroneController : MonoBehaviour
     // wind implementation
     public bool inWindZone = false;
     public GameObject windZone;
-    private Rigidbody wz;
-    public Vector3 directionofobj;
+    Rigidbody wz;
+    [SerializeField] private float windStrength = 10f;
+    //float windStrength;
+    //RaycastHit hit;
+    //Collider[] hitColliders;
+    //public Vector3 windDirection = new Vector3(0, 0, -1);
+    // public Vector3 directionofobj;
 
     [Header("Drone type")]
     public DroneType drone;
@@ -20,6 +25,9 @@ public class DroneController : MonoBehaviour
     // If NULL then player can move while controller moving
     [Header("Controller")]
     public GrabbableExtraEvents grabbableExtraEvents;
+
+    [Header("Orientation")]
+    public Transform direction;
 
     //Values of input
     private Vector2 rightStick;
@@ -69,33 +77,6 @@ public class DroneController : MonoBehaviour
     public float throttleSpeedIncrement = 10f;
     public GameObject[] propellers;
 
-    //updates the speed of the propeller based on input (Maybe can be moved to fixedupdate)
-    void Update () {
-        // Deals with animation
-        if (Input.GetKey(KeyCode.W)) {
-            IncreaseThrottleSpeed();
-        }
-        else if (Input.GetKey(KeyCode.S)) {
-            DecreaseThrottleSpeed();
-        }
-        UpdateThrottleSpeed();
-    }
-
-    //Functions which control the speed increase, decreasem and update time.
-    void IncreaseThrottleSpeed() {
-        currentThrottlePower += throttleSpeedIncrement * Time.deltaTime;
-        currentThrottlePower = Mathf.Clamp(currentThrottlePower, minThrottleSpeed, maxThrottleSpeed);
-    }
-    void DecreaseThrottleSpeed() {
-        currentThrottlePower -= throttleSpeedIncrement * Time.deltaTime;
-        currentThrottlePower = Mathf.Clamp(currentThrottlePower, minThrottleSpeed, maxThrottleSpeed);
-    }
-    void UpdateThrottleSpeed() {
-        foreach (GameObject propeller in propellers) {
-            propeller.transform.Rotate(Vector3.up * currentThrottlePower * Time.deltaTime);
-        }
-    }
-
     // Start is called before the first frame update
     // Initialize the input drone controls
     void Start()
@@ -133,6 +114,19 @@ public class DroneController : MonoBehaviour
         InputManager.Instance.playerActions.DroneControls.HorizontalMovement.canceled += OnRightStick;
     }
 
+    
+    //updates the speed of the propeller based on input (Maybe can be moved to fixedupdate)
+    void Update () {
+        // Deals with animation
+        if (throttleInput > 0) {
+            IncreaseThrottleSpeed();
+        }
+        else if (throttleInput < 0) {
+            DecreaseThrottleSpeed();
+        }
+
+        UpdateThrottleSpeed();
+    }
 
     // Any physics related drone movement goes here
     private void FixedUpdate()
@@ -140,31 +134,49 @@ public class DroneController : MonoBehaviour
         // Drone Movement
         MoveDrone();
         SpeedControl();
+        // DroneSound(); //function call for Drone sound in propeller
         //rotation method (Foward movement needs to be replaced here with the correct command or the tilt method)
         //Yaw();
         //rb.rotation = rb.rotation * Quaternion.AngleAxis(yawSpeed * yawInput, Vector3.up);
 
-        //This code gets the horizontal input from the player (e.g., from the arrow keys or joystick) and rotates the drone around its y-axis based on that input.
-        float horizontal = Input.GetAxis("Horizontal");
-        transform.Rotate(0, horizontal * yawSpeed * Time.deltaTime, 0);
+        // //This code gets the horizontal input from the player (e.g., from the arrow keys or joystick) and rotates the drone around its y-axis based on that input.
+        // float horizontal = Input.GetAxis("Horizontal");
+        // transform.Rotate(0, horizontal * yawSpeed * Time.deltaTime, 0);
 
-        //This code gets the vertical input from the player (e.g., from the up/down arrow keys or joystick) and calculates the movement vector based on the drone's forward direction and the player's input. It then moves the drone's Rigidbody component in that direction using the MovePosition() function.
-        float vertical = Input.GetAxis("Vertical");
-        Vector3 movement = transform.forward * vertical * pitchSpeed * Time.deltaTime;
-        rb.MovePosition(rb.position + movement);
+        // //This code gets the vertical input from the player (e.g., from the up/down arrow keys or joystick) and calculates the movement vector based on the drone's forward direction and the player's input. It then moves the drone's Rigidbody component in that direction using the MovePosition() function.
+        // float vertical = Input.GetAxis("Vertical");
+        // Vector3 movement = transform.forward * vertical * pitchSpeed * Time.deltaTime;
+        // rb.MovePosition(rb.position + movement);
 
         // Wind
-        Vector3 directionofobj = new Vector3(Random.Range(0, 10), Random.Range(0, 10), Random.Range(0, 10));
+        //Vector3 directionofobj = new Vector3(Random.Range(0, 10), Random.Range(0, 10), Random.Range(0, 10));
 
+        //if (inWindZone)
+        // {
+        //  int max = 5;
+        // int min = -5;
+        // Vector3 directionofwobj = new Vector3(Random.Range(min, max), Random.Range(min, max), Random.Range(min, max));
+        // wz.AddForce(directionofwobj * windZone.GetComponent<windarea>().strength);
+
+        //}
         if (inWindZone)
         {
-            int max = 5;
-            int min = -5;
-            Vector3 directionofwobj = new Vector3(Random.Range(min, max), Random.Range(min, max), Random.Range(min, max));
-            wz.AddForce(directionofwobj * windZone.GetComponent<windarea>().strength);
-            
+            //windStrength = Random.Range(windZone.GetComponent<windarea>().WindStrengthMin, (windZone.GetComponent<windarea>().WindStrengthMax));
+
+            //hitColliders = Physics.OverlapSphere(transform.position, (windZone.GetComponent<windarea>().radius));
+
+            //for (int i = 0; i < hitColliders.Length; i++)
+            //{
+            //if (wz = hitColliders[i].GetComponent<Rigidbody>())
+            //if (Physics.Raycast(transform.position, wz.position - transform.position, out hit))
+            //if (hit.transform.GetComponent<Rigidbody>())
+            // wz.AddRelativeForce(windDirection * windStrength, ForceMode.Acceleration);
+            //}
+            Vector3 windDirection = new Vector3(Random.Range(-20f, 20f), Random.Range(-20f, 20f), Random.Range(-20f, 20f));
+            rb.AddForce(windDirection * windZone.GetComponent<windarea>().windStrength);
+
         }
-        
+
     }
 
     public void OnRightStick(InputAction.CallbackContext value)
@@ -222,7 +234,7 @@ public class DroneController : MonoBehaviour
 
     // Wind related PHysics
     //if enter and exit windarea
-    void OnTriggerEnter(Collider colli)
+   void OnTriggerEnter(Collider colli)
     {
         if (colli.gameObject.tag == "wind area")
         {
@@ -250,7 +262,10 @@ public class DroneController : MonoBehaviour
     private float targetAngle;
     private void MoveDrone()
     {
-        Vector3 movement = new Vector3((rollInput * rollSpeed), (throttleInput * throttlePower), (pitchInput * pitchSpeed));
+        // Adds direction into the input
+        Vector3 moveDir = rollInput * direction.right + pitchInput * direction.forward;
+        // Movement direction
+        Vector3 movement = new Vector3((moveDir.normalized.x * rollSpeed * 2f), (throttleInput * throttlePower), (moveDir.normalized.z * pitchSpeed * 2f));
 
         //Tilt calculations
         tiltAmountFoward = Mathf.SmoothDamp(tiltAmountFoward, 20 * pitchInput, ref tiltVelocityFoward, 0.5f); //tilting method and speed which can be changed
@@ -263,9 +278,6 @@ public class DroneController : MonoBehaviour
         rb.rotation = Quaternion.Euler(new Vector3(tiltAmountFoward, currentYawSpeed, tiltAmountHorizontal));
 
         //Debug.Log(rb.rotation);
-
-        //Need to apply the current rotation of the drone to the direction of the movement, then we can get what we need
-        movement = new Vector3(movement.x /*multiply drone rotation here*/, movement.y, movement.z /*multiply drone rotation here*/);
         rb.AddForce(movement, ForceMode.Force);
     }
 
@@ -333,6 +345,28 @@ public class DroneController : MonoBehaviour
             }
         }
     }
+
+    //Functions which control the speed increase, decreasem and update time.
+    void IncreaseThrottleSpeed() {
+        currentThrottlePower += throttleSpeedIncrement * Time.deltaTime;
+        currentThrottlePower = Mathf.Clamp(currentThrottlePower, minThrottleSpeed, maxThrottleSpeed);
+    }
+    void DecreaseThrottleSpeed() {
+        currentThrottlePower -= throttleSpeedIncrement * Time.deltaTime;
+        currentThrottlePower = Mathf.Clamp(currentThrottlePower, minThrottleSpeed, maxThrottleSpeed);
+    }
+    void UpdateThrottleSpeed() {
+        foreach (GameObject propeller in propellers) {
+            propeller.transform.Rotate(Vector3.up * currentThrottlePower * Time.deltaTime);
+        }
+    }
+
+
+    // //Function for Drone Sound using imported sound in propellers
+    // private AudioSource droneSound;//variable for drone sound
+    // void DroneSound(){
+    //     droneSound.pitch = 1 + (drone.velocity.magnitude / 100);//drone sound will change based speed of drone.
+    // }//Honestly not sure what to put instead of velocity here.
 
     //Variables for desired rotation and rotation amount for keys
     // Use YawInput to determine if its rotating left or right

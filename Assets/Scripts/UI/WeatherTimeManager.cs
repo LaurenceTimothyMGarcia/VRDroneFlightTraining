@@ -104,6 +104,28 @@ public class WeatherTimeManager : MonoBehaviour
         Debug.Log("plz");
     }
 
+    public TimeEnum GetCurrentTimeEnum(double hour)
+    {
+        //double hour = double.Parse(time);
+        hour = hour / 24f;
+
+        if(hour <= 0.15f)
+            return TimeEnum.Sunrise;
+        else if(hour > 0.15f && hour <= 0.25f)
+            return TimeEnum.Sunrise;
+        else if(hour > 0.25f && hour <= 0.38f)
+            return TimeEnum.Morning;
+        else if(hour > 0.38f && hour <= 0.5f)
+            return TimeEnum.Afternoon;
+        else if(hour > 0.5f && hour <= 0.74f)
+            return TimeEnum.Sunset;
+        else if(hour > 0.74f && hour <= 0.785f)
+            return TimeEnum.Evening;
+        else if(hour > 0.785f && hour <= 0.99f)
+            return TimeEnum.Night;
+        else
+            return TimeEnum.Afternoon;
+    }
     public EnviroWeatherPreset GetCurrentWeatherPreset()
     {
         return EnviroSkyMgr.instance.GetCurrentWeatherPreset();

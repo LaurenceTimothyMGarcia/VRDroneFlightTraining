@@ -313,7 +313,7 @@ MonoBehaviour:
   ignoreWeight: 0
   parentOnGrab: 1
   throwPower: 1
-  jointBreakForce: 3500
+  jointBreakForce: Infinity
   showAdvancedSettings: 1
   makeChildrenGrabbable: 1
   grabPriorityWeight: 1
