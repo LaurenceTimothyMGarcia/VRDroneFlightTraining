@@ -125,6 +125,10 @@ public class DroneController : MonoBehaviour
         DroneController droneController = new DroneController();//creates a new instance of the DroneController class and assigns it to a variable
         droneController.Initialize(gameObject);//calls the function to begin initlizaing the propellers and their animation 
 
+        droneSound = gameObject.transform.Find("drone_sound").GetComponent<AudioSource>();//Call the Audio for the drone
+        //not sure if the above code should be droneModel or gameObject  
+
+
         // Initializes input controls
         InputManager.Instance.playerActions.DroneControls.VerticalMovementRotation.performed += OnLeftStick;
         InputManager.Instance.playerActions.DroneControls.VerticalMovementRotation.canceled += OnLeftStick;
@@ -152,7 +156,7 @@ public class DroneController : MonoBehaviour
         // Drone Movement
         MoveDrone();
         SpeedControl();
-        // DroneSound(); //function call for Drone sound in propeller
+        DroneSound(); //function call for Drone sound in propeller
         //rotation method (Foward movement needs to be replaced here with the correct command or the tilt method)
         //Yaw();
         //rb.rotation = rb.rotation * Quaternion.AngleAxis(yawSpeed * yawInput, Vector3.up);
@@ -281,7 +285,6 @@ public class DroneController : MonoBehaviour
         }
     }
 
-
     // Reference Code from DroneMovement.cs
     // Variables for tilting
     private float tiltAmountFoward;
@@ -392,11 +395,11 @@ public class DroneController : MonoBehaviour
     }
 
 
-    // //Function for Drone Sound using imported sound in propellers
-    // private AudioSource droneSound;//variable for drone sound
-    // void DroneSound(){
-    //     droneSound.pitch = 1 + (drone.velocity.magnitude / 100);//drone sound will change based speed of drone.
-    // }//Honestly not sure what to put instead of velocity here.
+    //Function for Drone Sound using imported sound in propellers
+     private AudioSource droneSound;//variable for drone sound
+     void DroneSound(){
+         droneSound.pitch = 1 + (rb.velocity.magnitude / 100);//drone sound will change based speed of drone. (I really hope its not supposed to be drone instead of rb)
+     }//Honestly not sure what to put instead of velocity here.
 
     //Variables for desired rotation and rotation amount for keys
     // Use YawInput to determine if its rotating left or right
