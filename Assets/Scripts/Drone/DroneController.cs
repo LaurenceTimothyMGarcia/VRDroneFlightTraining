@@ -76,7 +76,15 @@ public class DroneController : MonoBehaviour
     public float maxThrottleSpeed = 1000f;
     public float minThrottleSpeed = 0f;
     public float throttleSpeedIncrement = 10f;
-    public GameObject[] propellers;
+    public GameObject[] propellers; //creates an empty array variable for the propellers
+
+    public void Initialize(GameObject drone) { //creates the function for propellers array to be filled with the different propellers onces the game starts.
+        propellers = new GameObject[4];
+        propellers[0] = drone.transform.Find("NorthWestProp").gameObject;
+        propellers[1] = drone.transform.Find("NorthEastProp").gameObject;
+        propellers[2] = drone.transform.Find("SouthWestProp").gameObject;
+        propellers[3] = drone.transform.Find("SouthWestProp").gameObject;
+    }
 
     // Start is called before the first frame update
     // Initialize the input drone controls
@@ -108,7 +116,8 @@ public class DroneController : MonoBehaviour
         yawSpeed = drone.yawSpeed;
         throttlePower = drone.throttlePower;
 
-        //propellers[0] = GameObject.transform.Find("NorthWestProp");
+        DroneController droneController = new DroneController();//creates a new instance of the DroneController class and assigns it to a variable
+        droneController.Initialize(gameObject);//calls the function to begin initlizaing the propellers and their animation 
 
         // Initializes input controls
         InputManager.Instance.playerActions.DroneControls.VerticalMovementRotation.performed += OnLeftStick;
