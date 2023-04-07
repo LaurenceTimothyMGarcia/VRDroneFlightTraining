@@ -37,6 +37,11 @@ public class WeatherTimeUI : MonoBehaviour
        };
 
        rb = drone.GetComponent<Rigidbody>();
+
+      // weatherText.text = EnviroSkyMgr.instance.Weather.currentActiveWeatherPreset.Name;
+      WeatherTimeManager.Instance.time = WeatherTimeManager.Instance.GetCurrentTimeEnum(EnviroSkyMgr.instance.GetCurrentTimeInHours());
+      timeText.text = WeatherTimeManager.Instance.time.ToString();
+
     }
 
     void Update()
@@ -86,6 +91,8 @@ public class WeatherTimeUI : MonoBehaviour
             dropdown.options.Add(optionData);
             Debug.Log("iteration " + i);
         }
+
+        dropdown.value = Array.IndexOf(Enum.GetValues(enumType.GetType()), enumType);
         yield return new WaitForSeconds(0.1f);
 
     }

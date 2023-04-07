@@ -43,12 +43,12 @@ GameObject:
   - component: {fileID: 6990955876776454233}
   - component: {fileID: 6990955876776454232}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Debug Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6990955876776454235
 Transform:
   m_ObjectHideFlags: 0
@@ -189,8 +189,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inWindZone: 0
   windZone: {fileID: 0}
-  windDirection: {x: 0, y: 0, z: -1}
-  drone: {fileID: 0}
+  windStrength: 10
+  drone: {fileID: 11400000, guid: 9985743efe7853649873e179e6712a05, type: 2}
   grabbableExtraEvents: {fileID: 0}
   direction: {fileID: 8317726778153188887}
   rollSpeed: 0

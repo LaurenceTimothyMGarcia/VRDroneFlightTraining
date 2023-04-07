@@ -11,12 +11,18 @@ public class DroneController : MonoBehaviour
     public bool inWindZone = false;
     public GameObject windZone;
     Rigidbody wz;
-    [SerializeField] private float windStrength = 10f;
+    //[SerializeField] private float windStrength = 10f;
+
     //float windStrength;
     //RaycastHit hit;
     //Collider[] hitColliders;
     //public Vector3 windDirection = new Vector3(0, 0, -1);
     // public Vector3 directionofobj;
+
+    //drone height
+    public float height;
+    RaycastHit hit;
+
 
     [Header("Drone type")]
     public DroneType drone;
@@ -70,12 +76,21 @@ public class DroneController : MonoBehaviour
     private float currentYawSpeed;
     private float currentThrottlePower = 0f; //added initilization
     private Rigidbody rb;
+    private GameObject droneModel;
 
     //varaibles for propellers on drone (set parameters subject to change)
     public float maxThrottleSpeed = 1000f;
     public float minThrottleSpeed = 0f;
     public float throttleSpeedIncrement = 10f;
-    public GameObject[] propellers;
+    public GameObject[] propellers; //creates an empty array variable for the propellers
+
+    public void Initialize(GameObject drone) { //creates the function for propellers array to be filled with the different propellers onces the game starts.
+        propellers = new GameObject[4];
+        propellers[0] = drone.transform.Find("NorthWestProp").gameObject;
+        propellers[1] = drone.transform.Find("NorthEastProp").gameObject;
+        propellers[2] = drone.transform.Find("SouthWestProp").gameObject;
+        propellers[3] = drone.transform.Find("SouthWestProp").gameObject;
+    }
 
     // Start is called before the first frame update
     // Initialize the input drone controls
@@ -92,8 +107,8 @@ public class DroneController : MonoBehaviour
 
         // Listener for when the controller is held by 2 hands or not
         // COMMENTOUT TESTNOVR
-        /*grabbableExtraEvents.OnTwoHandedGrab.AddListener(ActivateDroneMovement);
-        grabbableExtraEvents.OnTwoHandedRelease.AddListener(ActivatePlayerMovement);*/
+        grabbableExtraEvents.OnTwoHandedGrab.AddListener(ActivateDroneMovement);
+        grabbableExtraEvents.OnTwoHandedRelease.AddListener(ActivatePlayerMovement);
 
         // Wind related variables
         wz = GetComponent<Rigidbody>(); //windarea 
@@ -106,6 +121,13 @@ public class DroneController : MonoBehaviour
         pitchSpeed = drone.pitchSpeed;
         yawSpeed = drone.yawSpeed;
         throttlePower = drone.throttlePower;
+
+        DroneController droneController = new DroneController();//creates a new instance of the DroneController class and assigns it to a variable
+        droneController.Initialize(gameObject);//calls the function to begin initlizaing the propellers and their animation 
+
+        droneSound = gameObject.transform.Find("drone_sound").GetComponent<AudioSource>();//Call the Audio for the drone
+        //not sure if the above code should be droneModel or gameObject  
+
 
         // Initializes input controls
         InputManager.Instance.playerActions.DroneControls.VerticalMovementRotation.performed += OnLeftStick;
@@ -134,7 +156,7 @@ public class DroneController : MonoBehaviour
         // Drone Movement
         MoveDrone();
         SpeedControl();
-        // DroneSound(); //function call for Drone sound in propeller
+        DroneSound(); //function call for Drone sound in propeller
         //rotation method (Foward movement needs to be replaced here with the correct command or the tilt method)
         //Yaw();
         //rb.rotation = rb.rotation * Quaternion.AngleAxis(yawSpeed * yawInput, Vector3.up);
@@ -177,6 +199,18 @@ public class DroneController : MonoBehaviour
 
         }
 
+        //Drone height calculation for warning
+        Ray ray = new Ray(transform.position, -Vector3.up);
+
+        if(Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider.tag == "ground")
+            {
+                float height_above = hit.distance - 2.5f;
+                Debug.Log(height_above);
+            }
+        }
+
     }
 
     public void OnRightStick(InputAction.CallbackContext value)
@@ -216,7 +250,7 @@ public class DroneController : MonoBehaviour
     // Drone movement detection if controller has been grabbed or not
     // If controller is grabbed with 2 hands then player stops moving and drone moves, vice versa
     // COMMENTOUT TESTNOVR
-    /*void ActivateDroneMovement(Hand hand, Grabbable grab)
+    void ActivateDroneMovement(Hand hand, Grabbable grab)
     {
         Debug.Log("Two-handed grab detected!");
 
@@ -230,7 +264,7 @@ public class DroneController : MonoBehaviour
 
         InputManager.Instance.playerActions.DroneControls.Disable();
         InputManager.Instance.playerActions.DefaultControls.Enable();
-    }*/
+    }
 
     // Wind related PHysics
     //if enter and exit windarea
@@ -250,7 +284,6 @@ public class DroneController : MonoBehaviour
             inWindZone = false;
         }
     }
-
 
     // Reference Code from DroneMovement.cs
     // Variables for tilting
@@ -362,11 +395,11 @@ public class DroneController : MonoBehaviour
     }
 
 
-    // //Function for Drone Sound using imported sound in propellers
-    // private AudioSource droneSound;//variable for drone sound
-    // void DroneSound(){
-    //     droneSound.pitch = 1 + (drone.velocity.magnitude / 100);//drone sound will change based speed of drone.
-    // }//Honestly not sure what to put instead of velocity here.
+    //Function for Drone Sound using imported sound in propellers
+     private AudioSource droneSound;//variable for drone sound
+     void DroneSound(){
+         droneSound.pitch = 1 + (rb.velocity.magnitude / 100);//drone sound will change based speed of drone. (I really hope its not supposed to be drone instead of rb)
+     }//Honestly not sure what to put instead of velocity here.
 
     //Variables for desired rotation and rotation amount for keys
     // Use YawInput to determine if its rotating left or right
@@ -381,9 +414,9 @@ public class DroneController : MonoBehaviour
 
     // Destroys event listener for controller
     // COMMENTOUT TESTNOVR
-    /*public void OnDestroy()
+    public void OnDestroy()
     {
         grabbableExtraEvents.OnTwoHandedGrab.RemoveListener(ActivateDroneMovement);
         grabbableExtraEvents.OnTwoHandedRelease.RemoveListener(ActivatePlayerMovement);
-    }*/
+    }
 }
