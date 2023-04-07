@@ -11,12 +11,18 @@ public class DroneController : MonoBehaviour
     public bool inWindZone = false;
     public GameObject windZone;
     Rigidbody wz;
-    [SerializeField] private float windStrength = 10f;
+    //[SerializeField] private float windStrength = 10f;
+
     //float windStrength;
     //RaycastHit hit;
     //Collider[] hitColliders;
     //public Vector3 windDirection = new Vector3(0, 0, -1);
     // public Vector3 directionofobj;
+
+    //drone height
+    public float height;
+    RaycastHit hit;
+
 
     [Header("Drone type")]
     public DroneType drone;
@@ -187,6 +193,18 @@ public class DroneController : MonoBehaviour
             Vector3 windDirection = new Vector3(Random.Range(-20f, 20f), Random.Range(-20f, 20f), Random.Range(-20f, 20f));
             rb.AddForce(windDirection * windZone.GetComponent<windarea>().windStrength);
 
+        }
+
+        //Drone height calculation for warning
+        Ray ray = new Ray(transform.position, -Vector3.up);
+
+        if(Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider.tag == "ground")
+            {
+                float height_above = hit.distance - 2.5f;
+                Debug.Log(height_above);
+            }
         }
 
     }
