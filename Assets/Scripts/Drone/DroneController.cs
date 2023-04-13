@@ -84,6 +84,8 @@ public class DroneController : MonoBehaviour
     public float throttleSpeedIncrement = 10f;
     public GameObject[] propellers; //creates an empty array variable for the propellers
 
+    private AudioSource droneSound;//variable for drone sound
+
     public void Initialize(GameObject drone) { //creates the function for propellers array to be filled with the different propellers onces the game starts.
         propellers = new GameObject[4];
         propellers[0] = drone.transform.Find("NorthWestProp").gameObject;
@@ -123,9 +125,9 @@ public class DroneController : MonoBehaviour
         throttlePower = drone.throttlePower;
 
         DroneController droneController = new DroneController();//creates a new instance of the DroneController class and assigns it to a variable
-        droneController.Initialize(gameObject);//calls the function to begin initlizaing the propellers and their animation 
+        //droneController.Initialize(gameObject);//calls the function to begin initlizaing the propellers and their animation 
 
-        droneSound = gameObject.transform.Find("drone_sound").GetComponent<AudioSource>();//Call the Audio for the drone
+        //droneSound = gameObject.transform.Find("drone_sound").GetComponent<AudioSource>();//Call the Audio for the drone
         //not sure if the above code should be droneModel or gameObject  
 
 
@@ -396,9 +398,8 @@ public class DroneController : MonoBehaviour
 
 
     //Function for Drone Sound using imported sound in propellers
-     private AudioSource droneSound;//variable for drone sound
      void DroneSound(){
-         droneSound.pitch = 1 + (rb.velocity.magnitude / 100);//drone sound will change based speed of drone. (I really hope its not supposed to be drone instead of rb)
+         //droneSound.pitch = 1 + (rb.velocity.magnitude / 100);//drone sound will change based speed of drone. (I really hope its not supposed to be drone instead of rb)
      }//Honestly not sure what to put instead of velocity here.
 
     //Variables for desired rotation and rotation amount for keys
