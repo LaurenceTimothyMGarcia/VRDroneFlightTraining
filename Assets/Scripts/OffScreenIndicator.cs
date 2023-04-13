@@ -34,23 +34,23 @@ public class OffScreenIndicator : MonoBehaviour
             if (targetViewportPoint.x > 0)
             {
                 // Object is off-screen to the left
-                indicatorPos.x = 0;
+                indicatorPos.x = Screen.width/4;
             }
             else if (targetViewportPoint.x < 1)
             {
                 // Object is off-screen to the right
-                indicatorPos.x = Screen.width;
+                indicatorPos.x = Screen.width*3/4;
             }
 
             if (targetViewportPoint.y < 0)
             {
                 // Object is off-screen below
-                indicatorPos.y = 0;
+                indicatorPos.y = Screen.height/2;
             }
             else if (targetViewportPoint.y > 1)
             {
                 // Object is off-screen above
-                indicatorPos.y = Screen.height;
+                indicatorPos.y = Screen.height/2;
             }
 
             // Set the position of the indicator
