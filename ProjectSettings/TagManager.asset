@@ -30,9 +30,9 @@ TagManager:
   - Map Feature
   - 
   - 
-  - 
-  - 
-  - 
+  - HandPlayer
+  - Hand
+  - Grabbable
   - Feature
   - Entity
   - Building
