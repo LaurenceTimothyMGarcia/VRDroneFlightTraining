@@ -1064,6 +1064,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6990955878230915055, guid: f41aad973398d41429ea2dd36484443c, type: 3}
+      propertyPath: drone
+      value: 
+      objectReference: {fileID: 11400000, guid: 9985743efe7853649873e179e6712a05, type: 2}
+    - target: {fileID: 6990955878230915055, guid: f41aad973398d41429ea2dd36484443c, type: 3}
       propertyPath: grabbableExtraEvents
       value: 
       objectReference: {fileID: 1218759989}
@@ -1626,6 +1630,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1756470441364021875, guid: 13098a7b27d411745ae5d9a9ad81ab52, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2998579147867432538, guid: 13098a7b27d411745ae5d9a9ad81ab52, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}

@@ -142,7 +142,7 @@ public class DroneController : MonoBehaviour
             DecreaseThrottleSpeed();
         }
 
-        UpdateThrottleSpeed();
+        //UpdateThrottleSpeed();
 
         //drone speed
         StartCoroutine(CalculateSpeed());
