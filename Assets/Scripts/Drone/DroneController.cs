@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Autohand;
+using UnityEngine.UI;
 
 public class DroneController : MonoBehaviour
 {
@@ -11,16 +12,20 @@ public class DroneController : MonoBehaviour
     public bool inWindZone = false;
     public GameObject windZone;
     Rigidbody wz;
-    //[SerializeField] private float windStrength = 10f;
+    [SerializeField] private float windStrength = 10f;
 
-   
+
 
     //drone height
-    public float height;
+    public Text heighVal;
+    public static float height;
     RaycastHit hit;
+    public GameObject heightWarning;
 
     //drone speed
-    public float dronespeed = 0;
+    public Text speedVal;
+    public static float dronespeed = 0;
+    public GameObject speedWarning;
 
 
     [Header("Drone type")]
@@ -97,6 +102,8 @@ public class DroneController : MonoBehaviour
     // Initialize the input drone controls
     void Start()
     {
+        dronespeed = 0;
+        height = 0;
         // Disables Drone controls on start (must be holding controller)
         InputManager.Instance.playerActions.DroneControls.Disable();
 
@@ -149,8 +156,13 @@ public class DroneController : MonoBehaviour
         }
 
         UpdateThrottleSpeed();
+
         //drone speed
         StartCoroutine(CalculateSpeed());
+       
+        //drone height
+        height = (float)(height * 3.28084);
+
     }
 
     // Any physics related drone movement goes here
@@ -173,17 +185,7 @@ public class DroneController : MonoBehaviour
         // Vector3 movement = transform.forward * vertical * pitchSpeed * Time.deltaTime;
         // rb.MovePosition(rb.position + movement);
 
-        // Wind
-        //Vector3 directionofobj = new Vector3(Random.Range(0, 10), Random.Range(0, 10), Random.Range(0, 10));
-
-        //if (inWindZone)
-        // {
-        //  int max = 5;
-        // int min = -5;
-        // Vector3 directionofwobj = new Vector3(Random.Range(min, max), Random.Range(min, max), Random.Range(min, max));
-        // wz.AddForce(directionofwobj * windZone.GetComponent<windarea>().strength);
-
-        //}
+        
         if (inWindZone)
         {
             //windStrength = Random.Range(windZone.GetComponent<windarea>().WindStrengthMin, (windZone.GetComponent<windarea>().WindStrengthMax));
@@ -200,10 +202,10 @@ public class DroneController : MonoBehaviour
             Vector3 windDirection = new Vector3(Random.Range(-20f, 20f), Random.Range(-20f, 20f), Random.Range(-20f, 20f));
             rb.AddForce(windDirection * windZone.GetComponent<windarea>().windStrength);
 
+
         }
 
         //Drone height calculation for warning
-
         Ray ray = new Ray(transform.position, -Vector3.up);
 
         if(Physics.Raycast(ray, out hit))
@@ -211,9 +213,16 @@ public class DroneController : MonoBehaviour
             if (hit.collider.tag == "ground")
             {
                 height = hit.distance;
-                Debug.Log(height);
+                //Debug.Log(height);
             }
         }
+
+        speedVal.text = dronespeed.ToString("F2");
+        showhideswPanel();
+
+        heighVal.text = height.ToString("F2");
+        showhidehwPanel();
+
 
     }
 
@@ -225,6 +234,33 @@ public class DroneController : MonoBehaviour
         dronespeed = (lastPosition - transform.position).magnitude / Time.deltaTime;
         Debug.Log(dronespeed);
     }
+
+    //warning for speed and height
+    public void showhidehwPanel()
+    {
+        if (height >= 400)
+        {
+            heightWarning.gameObject.SetActive(true);
+        }
+        else
+        {
+            heightWarning.gameObject.SetActive(false);
+        }
+    }
+
+    public void showhideswPanel()
+    {
+        if (dronespeed >= 100)
+        {
+            speedWarning.gameObject.SetActive(true);
+        }
+        else
+        {
+            speedWarning.gameObject.SetActive(false);
+        }
+    }
+
+    //
 
     public void OnRightStick(InputAction.CallbackContext value)
     {
