@@ -19,6 +19,9 @@ public class DroneController : MonoBehaviour
     public float height;
     RaycastHit hit;
 
+    //drone speed
+    public float dronespeed = 0;
+
 
     [Header("Drone type")]
     public DroneType drone;
@@ -146,6 +149,8 @@ public class DroneController : MonoBehaviour
         }
 
         UpdateThrottleSpeed();
+        //drone speed
+        StartCoroutine(CalculateSpeed());
     }
 
     // Any physics related drone movement goes here
@@ -210,6 +215,15 @@ public class DroneController : MonoBehaviour
             }
         }
 
+    }
+
+    //speed of drone
+    IEnumerator CalculateSpeed()
+    {
+        Vector3 lastPosition = transform.position;
+        yield return new WaitForFixedUpdate();
+        dronespeed = (lastPosition - transform.position).magnitude / Time.deltaTime;
+        Debug.Log(dronespeed);
     }
 
     public void OnRightStick(InputAction.CallbackContext value)

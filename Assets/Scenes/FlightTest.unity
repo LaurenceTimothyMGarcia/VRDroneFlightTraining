@@ -485,5 +485,9 @@ PrefabInstance:
       propertyPath: drone
       value: 
       objectReference: {fileID: 11400000, guid: 9985743efe7853649873e179e6712a05, type: 2}
+    - target: {fileID: 6990955878230915055, guid: f41aad973398d41429ea2dd36484443c, type: 3}
+      propertyPath: inWindZone
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f41aad973398d41429ea2dd36484443c, type: 3}
