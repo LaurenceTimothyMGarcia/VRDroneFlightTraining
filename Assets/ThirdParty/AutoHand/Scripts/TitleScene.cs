@@ -9,4 +9,9 @@ public class TitleScene : MonoBehaviour
     {
         SceneManager.LoadScene("MasterScene");
     }
+
+    public void ChangetoExam()
+    {
+        SceneManager.LoadScene("Exam");
+    }
 }
