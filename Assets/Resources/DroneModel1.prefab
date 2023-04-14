@@ -578,6 +578,7 @@ GameObject:
   - component: {fileID: 5173595638728069836}
   - component: {fileID: 1470217254178235225}
   - component: {fileID: 7090241701794579354}
+  - component: {fileID: 1513597085101585536}
   m_Layer: 0
   m_Name: leg_left_drone_lt_supportlegs
   m_TagString: Untagged
@@ -648,6 +649,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1513597085101585536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086732173284012257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
 --- !u!1 &1149695261963031324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,6 +1079,7 @@ GameObject:
   - component: {fileID: 70684509618195402}
   - component: {fileID: 1345513044375974923}
   - component: {fileID: 6218457889105558471}
+  - component: {fileID: 193215978964083043}
   m_Layer: 0
   m_Name: drone_rt_supportlegs_leg_right
   m_TagString: Untagged
@@ -1134,6 +1150,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &193215978964083043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033684640248431545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
 --- !u!1 &2216470060626470738
 GameObject:
   m_ObjectHideFlags: 0
@@ -4352,6 +4382,7 @@ GameObject:
   - component: {fileID: 1917773515669167312}
   - component: {fileID: 8638347493170213950}
   - component: {fileID: 5582125393028800887}
+  - component: {fileID: 1409502458895651582}
   m_Layer: 0
   m_Name: done_body
   m_TagString: Untagged
@@ -4422,6 +4453,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1409502458895651582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6181594552237813556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
 --- !u!1 &6250302560145280931
 GameObject:
   m_ObjectHideFlags: 0
