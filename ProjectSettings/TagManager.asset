@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - CityGen3D
+  - ground
+  - wind area
   layers:
   - Default
   - TransparentFX

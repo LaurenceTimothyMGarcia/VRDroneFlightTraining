@@ -13,11 +13,7 @@ public class DroneController : MonoBehaviour
     Rigidbody wz;
     //[SerializeField] private float windStrength = 10f;
 
-    //float windStrength;
-    //RaycastHit hit;
-    //Collider[] hitColliders;
-    //public Vector3 windDirection = new Vector3(0, 0, -1);
-    // public Vector3 directionofobj;
+   
 
     //drone height
     public float height;
@@ -202,14 +198,15 @@ public class DroneController : MonoBehaviour
         }
 
         //Drone height calculation for warning
+
         Ray ray = new Ray(transform.position, -Vector3.up);
 
         if(Physics.Raycast(ray, out hit))
         {
             if (hit.collider.tag == "ground")
             {
-                float height_above = hit.distance - 2.5f;
-                Debug.Log(height_above);
+                height = hit.distance;
+                Debug.Log(height);
             }
         }
 
