@@ -133,7 +133,6 @@ public class DroneController : MonoBehaviour
         DroneController droneController = new DroneController();//creates a new instance of the DroneController class and assigns it to a variable
         //droneController.Initialize(gameObject);//calls the function to begin initlizaing the propellers and their animation 
 
-        //droneSound = gameObject.transform.Find("drone_sound").GetComponent<AudioSource>();//Call the Audio for the drone
         //not sure if the above code should be droneModel or gameObject  
 
 
