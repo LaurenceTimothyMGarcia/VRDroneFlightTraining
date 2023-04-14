@@ -32,6 +32,7 @@ Transform:
   m_Children:
   - {fileID: 876952386894326970}
   - {fileID: 876952387887302988}
+  - {fileID: 5502747213240865588}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -176.3, y: 0, z: 0}
@@ -9465,6 +9466,102 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &6812534598249151903
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5502747213240865588}
+  - component: {fileID: 909003167041595289}
+  m_Layer: 0
+  m_Name: WeatherTimeMgr
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5502747213240865588
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6812534598249151903}
+  m_LocalRotation: {x: 0.9994788, y: -0, z: -0, w: 0.03228307}
+  m_LocalPosition: {x: 1.289253, y: -0.12516671, z: -0.86674345}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_Children: []
+  m_Father: {fileID: 838011418038754564}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &909003167041595289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6812534598249151903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcdbcf4bb13031745909612c02e70126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weather: 0
+  time: 0
+  impactDronePhysics: 0
+  weatherResistance: 0
+  weatherButtons:
+  - {fileID: 876952387774626378}
+  - {fileID: 876952386452079434}
+  - {fileID: 876952386414345156}
+  - {fileID: 876952386367310703}
+  - {fileID: 876952387970646219}
+  - {fileID: 876952387586152853}
+  - {fileID: 876952386423432946}
+  - {fileID: 876952387610473467}
+  - {fileID: 876952387259189622}
+  - {fileID: 876952386577475116}
+  - {fileID: 876952387982147787}
+  timeButtons:
+  - {fileID: 876952387900257184}
+  - {fileID: 876952387842123903}
+  - {fileID: 876952387611132309}
+  - {fileID: 876952386418379514}
+  - {fileID: 876952387115296343}
+  - {fileID: 876952386758952725}
+  _OnWeatherChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 66118432786712511}
+        m_TargetAssemblyTypeName: WeatherTimeUI2, Assembly-CSharp
+        m_MethodName: ChangeWeather
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _OnTimeChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 66118432786712511}
+        m_TargetAssemblyTypeName: WeatherTimeUI2, Assembly-CSharp
+        m_MethodName: ChangeTime
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7190808727906432489
 GameObject:
   m_ObjectHideFlags: 0
