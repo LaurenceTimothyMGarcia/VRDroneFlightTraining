@@ -9,7 +9,7 @@ namespace MTAssets.UltimateLODSystem
     [AddComponentMenu("")] //Hide this script in component menu.
     public class CurrentRenderPipeline : MonoBehaviour
     {
-        public static bool haveAnotherSrpPackages = false;
-        public static string packageDetected = "";
+        public static bool haveAnotherSrpPackages = true;
+        public static string packageDetected = "URP";
     }
 }

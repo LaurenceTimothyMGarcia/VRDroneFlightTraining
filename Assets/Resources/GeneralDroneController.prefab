@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 8873304203737333635}
   - component: {fileID: 8873304203737333632}
   - component: {fileID: 395639099995874057}
+  - component: {fileID: 7004371981268707701}
   m_Layer: 0
   m_Name: GeneralDroneController
   m_TagString: Untagged
@@ -457,6 +458,20 @@ MonoBehaviour:
   minRange: 0
   testAngle: 0
   testRange: 0
+--- !u!114 &7004371981268707701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8639354309912807391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 1
+  eraseRenderer: 0
 --- !u!1 &9014838516906686374
 GameObject:
   m_ObjectHideFlags: 0
