@@ -27,8 +27,7 @@ public class DroneAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //DroneController droneController = new DroneController();//creates a new instance of the DroneController class and assigns it to a variable
-        //droneController.Initialize(gameObject);//calls the function to begin initlizaing the propellers and their animation 
+
     }
 
     // Update is called once per frame
