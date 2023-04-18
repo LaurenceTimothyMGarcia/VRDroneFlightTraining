@@ -1244,6 +1244,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""CameraReset"",
+                    ""type"": ""Button"",
+                    ""id"": ""6ebd3569-9842-431f-85c1-e257ef07a861"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1400,6 +1409,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""VerticalMovementRotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3c1ce022-1278-495e-8375-b7ee9e70ad9c"",
+                    ""path"": ""<XRController>{RightHand}/secondaryButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraReset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -2191,6 +2211,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_DroneControls = asset.FindActionMap("DroneControls", throwIfNotFound: true);
         m_DroneControls_HorizontalMovement = m_DroneControls.FindAction("HorizontalMovement", throwIfNotFound: true);
         m_DroneControls_VerticalMovementRotation = m_DroneControls.FindAction("VerticalMovementRotation", throwIfNotFound: true);
+        m_DroneControls_CameraReset = m_DroneControls.FindAction("CameraReset", throwIfNotFound: true);
         // DefaultControls
         m_DefaultControls = asset.FindActionMap("DefaultControls", throwIfNotFound: true);
         m_DefaultControls_Menu = m_DefaultControls.FindAction("Menu", throwIfNotFound: true);
@@ -2682,12 +2703,14 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private IDroneControlsActions m_DroneControlsActionsCallbackInterface;
     private readonly InputAction m_DroneControls_HorizontalMovement;
     private readonly InputAction m_DroneControls_VerticalMovementRotation;
+    private readonly InputAction m_DroneControls_CameraReset;
     public struct DroneControlsActions
     {
         private @PlayerControls m_Wrapper;
         public DroneControlsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @HorizontalMovement => m_Wrapper.m_DroneControls_HorizontalMovement;
         public InputAction @VerticalMovementRotation => m_Wrapper.m_DroneControls_VerticalMovementRotation;
+        public InputAction @CameraReset => m_Wrapper.m_DroneControls_CameraReset;
         public InputActionMap Get() { return m_Wrapper.m_DroneControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -2703,6 +2726,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @VerticalMovementRotation.started -= m_Wrapper.m_DroneControlsActionsCallbackInterface.OnVerticalMovementRotation;
                 @VerticalMovementRotation.performed -= m_Wrapper.m_DroneControlsActionsCallbackInterface.OnVerticalMovementRotation;
                 @VerticalMovementRotation.canceled -= m_Wrapper.m_DroneControlsActionsCallbackInterface.OnVerticalMovementRotation;
+                @CameraReset.started -= m_Wrapper.m_DroneControlsActionsCallbackInterface.OnCameraReset;
+                @CameraReset.performed -= m_Wrapper.m_DroneControlsActionsCallbackInterface.OnCameraReset;
+                @CameraReset.canceled -= m_Wrapper.m_DroneControlsActionsCallbackInterface.OnCameraReset;
             }
             m_Wrapper.m_DroneControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -2713,6 +2739,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @VerticalMovementRotation.started += instance.OnVerticalMovementRotation;
                 @VerticalMovementRotation.performed += instance.OnVerticalMovementRotation;
                 @VerticalMovementRotation.canceled += instance.OnVerticalMovementRotation;
+                @CameraReset.started += instance.OnCameraReset;
+                @CameraReset.performed += instance.OnCameraReset;
+                @CameraReset.canceled += instance.OnCameraReset;
             }
         }
     }
@@ -2944,6 +2973,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     {
         void OnHorizontalMovement(InputAction.CallbackContext context);
         void OnVerticalMovementRotation(InputAction.CallbackContext context);
+        void OnCameraReset(InputAction.CallbackContext context);
     }
     public interface IDefaultControlsActions
     {

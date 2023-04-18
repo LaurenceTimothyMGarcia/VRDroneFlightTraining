@@ -131,6 +131,7 @@ public class DroneController : MonoBehaviour
         InputManager.Instance.playerActions.DroneControls.VerticalMovementRotation.canceled += OnLeftStick;
         InputManager.Instance.playerActions.DroneControls.HorizontalMovement.performed += OnRightStick;
         InputManager.Instance.playerActions.DroneControls.HorizontalMovement.canceled += OnRightStick;
+        InputManager.Instance.playerActions.DroneControls.CameraReset.performed += OnCameraReset;
     }
 
     
@@ -224,7 +225,7 @@ public class DroneController : MonoBehaviour
         Vector3 lastPosition = transform.position;
         yield return new WaitForFixedUpdate();
         dronespeed = (lastPosition - transform.position).magnitude / Time.deltaTime;
-        Debug.Log(dronespeed);
+        //Debug.Log(dronespeed);
     }
 
     //warning for speed and height
@@ -285,6 +286,16 @@ public class DroneController : MonoBehaviour
             //Set velocity to zero
             yawInput = 0;
             throttleInput = 0;
+        }
+    }
+
+    // Line intended to reset camera
+    public void OnCameraReset(InputAction.CallbackContext value)
+    {
+        if (value.performed)
+        {
+            Debug.Log("Button Pressed");
+            droneCamera.transform.eulerAngles = direction.transform.eulerAngles;
         }
     }
 
