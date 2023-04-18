@@ -14,8 +14,6 @@ public class DroneController : MonoBehaviour
     Rigidbody wz;
     [SerializeField] private float windStrength = 10f;
 
-
-
     //drone height
     public Text heighVal;
     public static float height;
@@ -38,6 +36,10 @@ public class DroneController : MonoBehaviour
 
     [Header("Orientation")]
     public Transform direction;
+
+    [Header("Drone Camera")]
+    public GameObject droneCamera;
+    public Transform vrHeadset;
 
     //Values of input
     private Vector2 rightStick;
@@ -149,6 +151,9 @@ public class DroneController : MonoBehaviour
        
         //drone height
         height = (float)(height * 3.28084);
+
+        // VR headset moves in sync with drone cam
+        droneCamera.transform.eulerAngles = vrHeadset.transform.eulerAngles;
 
     }
 
