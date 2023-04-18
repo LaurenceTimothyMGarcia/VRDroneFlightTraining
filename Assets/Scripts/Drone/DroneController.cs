@@ -41,6 +41,10 @@ public class DroneController : MonoBehaviour
     public GameObject droneCamera;
     public Transform vrHeadset;
 
+    [Header("Regulation Variables")]
+    public float regulationSpeedLimit = 100f;
+    public float regulationHeightLimit = 400f;
+
     //Values of input
     private Vector2 rightStick;
     private Vector2 leftStick;
@@ -62,18 +66,15 @@ public class DroneController : MonoBehaviour
     private float yawInput;
 
     // Can make this private now
-    [Header("Drone Control Speeds")]
-    [Tooltip("Drone Movement Left/Right controlled using the Right Stick")]
-    [SerializeField] private float rollSpeed;
-
-    [Tooltip("Drone Movement Forward/Backward controlled using the Right Stick")]
-    [SerializeField] private float pitchSpeed;
-
-    [Tooltip("Drone Rotation Left/Right controlled using the Left Stick")]
-    [SerializeField] private float yawSpeed;
-
-    [Tooltip("Drone Movement Up/Down controlled using the Left Stick")]
-    [SerializeField] private float throttlePower;
+    //[Header("Drone Control Speeds")]
+    //[Tooltip("Drone Movement Left/Right controlled using the Right Stick")] [SerializeField] 
+    private float rollSpeed;
+    //[Tooltip("Drone Movement Forward/Backward controlled using the Right Stick")] [SerializeField] 
+    private float pitchSpeed;
+    //[Tooltip("Drone Rotation Left/Right controlled using the Left Stick")] [SerializeField]
+    private float yawSpeed;
+    //[Tooltip("Drone Movement Up/Down controlled using the Left Stick")] [SerializeField] 
+    private float throttlePower;
 
     // Variables of current status of drone
     private Vector3 currentDirection;
@@ -89,12 +90,20 @@ public class DroneController : MonoBehaviour
     public float minThrottleSpeed = 0f;
     public float throttleSpeedIncrement = 10f;
 
+    //Booleans to determine if drone is out of view or not
+    [HideInInspector] public bool speedOver;
+    [HideInInspector] public bool heightOver;
+
     private AudioSource droneSound;//variable for drone sound
 
     // Start is called before the first frame update
     // Initialize the input drone controls
     void Start()
     {
+        // Initialize if player speed and height
+        speedOver = false;
+        heightOver = false;
+
         dronespeed = 0;
         height = 0;
         // Disables Drone controls on start (must be holding controller)
@@ -211,10 +220,10 @@ public class DroneController : MonoBehaviour
         }
 
         speedVal.text = dronespeed.ToString("F2");
-        showhideswPanel();
+        DroneTooFast();
 
         heighVal.text = height.ToString("F2");
-        showhidehwPanel();
+        DroneTooHigh();
 
 
     }
@@ -229,27 +238,31 @@ public class DroneController : MonoBehaviour
     }
 
     //warning for speed and height
-    public void showhidehwPanel()
+    public void DroneTooHigh()
     {
-        if (height >= 400)
+        if (height >= regulationHeightLimit)
         {
             heightWarning.gameObject.SetActive(true);
+            heightOver = true;
         }
         else
         {
             heightWarning.gameObject.SetActive(false);
+            heightOver = false;
         }
     }
 
-    public void showhideswPanel()
+    public void DroneTooFast()
     {
-        if (dronespeed >= 100)
+        if (dronespeed >= regulationSpeedLimit)
         {
             speedWarning.gameObject.SetActive(true);
+            speedOver = true;
         }
         else
         {
             speedWarning.gameObject.SetActive(false);
+            speedOver = false;
         }
     }
 
