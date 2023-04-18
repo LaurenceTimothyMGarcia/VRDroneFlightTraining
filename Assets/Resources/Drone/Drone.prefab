@@ -433,6 +433,8 @@ MonoBehaviour:
   drone: {fileID: 11400000, guid: 9985743efe7853649873e179e6712a05, type: 2}
   grabbableExtraEvents: {fileID: 0}
   direction: {fileID: 8317726778153188887}
+  droneCamera: {fileID: 500386736496025159}
+  vrHeadset: {fileID: 0}
   rollSpeed: 0
   pitchSpeed: 0
   yawSpeed: 0
