@@ -18,10 +18,14 @@ public class DroneAnimation : MonoBehaviour
 
     void UpdateThrottleSpeed()
     {
-        foreach (GameObject propeller in propellers)
-        {
-            propeller.transform.Rotate(Vector3.up * currentThrottlePower * Time.deltaTime);
-        }
+         foreach (GameObject propeller in propellers)
+    {
+        // Get the center of the propeller object
+        Vector3 center = propeller.GetComponent<Renderer>().bounds.center;
+        
+        // Rotate the propeller around its own center
+        propeller.transform.RotateAround(center, Vector3.up, currentThrottlePower * Time.deltaTime* 10);//the 10 value can be changed as needed for the speed of the propellers, or removed if default is wanted.
+    }
     }
 
     // Start is called before the first frame update
