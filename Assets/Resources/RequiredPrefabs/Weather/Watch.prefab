@@ -882,7 +882,6 @@ Transform:
   - {fileID: 2447787742282808833}
   - {fileID: 1967857732886327546}
   - {fileID: 6573316800686821236}
-  - {fileID: 7263232157652977037}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -51.67, y: -85, z: 0}
@@ -10307,64 +10306,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Wind
---- !u!1 &2758445659969892998
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7263232157652977037}
-  - component: {fileID: 6879864979418252500}
-  - component: {fileID: 7877010831239485015}
-  m_Layer: 0
-  m_Name: wind
-  m_TagString: wind area
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7263232157652977037
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2758445659969892998}
-  m_LocalRotation: {x: 0.32129142, y: 0.6080668, z: 0.2944093, w: 0.6635886}
-  m_LocalPosition: {x: 563.5771, y: 60.184956, z: 160.25703}
-  m_LocalScale: {x: 1255.9998, y: 319.99997, z: 319.99997}
-  m_Children: []
-  m_Father: {fileID: 2073209799182270788}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6879864979418252500
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2758445659969892998}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7877010831239485015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2758445659969892998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d10bd7948e05c3a44b40bde1db7b2ec2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  windStrength: 0
 --- !u!1 &2893307142442970324
 GameObject:
   m_ObjectHideFlags: 0
@@ -10468,7 +10409,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7877010831239485015}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: windarea, Assembly-CSharp
         m_MethodName: AdjustStrength
         m_Mode: 0
@@ -11714,7 +11655,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6879864979418252500}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.Collider, UnityEngine
         m_MethodName: set_isTrigger
         m_Mode: 0
