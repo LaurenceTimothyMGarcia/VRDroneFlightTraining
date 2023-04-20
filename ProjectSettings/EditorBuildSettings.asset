@@ -6,16 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TitleScene.unity
+    path: Assets/Scenes/MandatoryScenes/TitleScene.unity
     guid: d4e43faa9eb6b974eb3cfd57e4db85d8
   - enabled: 1
-    path: Assets/Scenes/Tutorial.unity
+    path: Assets/Scenes/MandatoryScenes/Tutorial.unity
     guid: 90a7c453440811a4cb10c0d2f568f6e1
   - enabled: 1
-    path: Assets/Scenes/Cal Poly Pomona.unity
+    path: Assets/Scenes/MandatoryScenes/Cal Poly Pomona.unity
     guid: 79efc526ea4c7ea4286b4e30520d3907
   - enabled: 1
-    path: Assets/Scenes/NewYork-Master.unity
+    path: Assets/Scenes/MandatoryScenes/NewYork-Master.unity
     guid: 327858d606e403840a97033dbc51119b
   - enabled: 1
     path: Assets/Scenes/Exam.unity
