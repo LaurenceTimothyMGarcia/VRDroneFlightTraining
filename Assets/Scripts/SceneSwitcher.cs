@@ -19,9 +19,22 @@ public class SceneSwitcher : MonoBehaviour
     {
         SceneManager.LoadScene("Cal Poly Pomona");
     }
+    public void NewYorkScene()
+    {
+        SceneManager.LoadScene("NewYork-Master");
+    }
+    public void TutorialScene()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
 
     public void MainMenuScene()
     {
         SceneManager.LoadScene("TitleScene");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
