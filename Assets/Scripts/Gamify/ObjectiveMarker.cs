@@ -4,18 +4,25 @@ using UnityEngine;
 
 public class ObjectiveMarker : MonoBehaviour
 {
-    public float sphereRad = 25f;
-    
+    public float sphereDiameter = 25f;
+
+    public Transform sphere;
+
+    private GameObject drone;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        sphere.localScale = new Vector3(sphereDiameter, sphereDiameter, sphereDiameter);
+        drone = GameObject.FindWithTag("Drone");
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (drone.GetComponent<DroneController>().objectiveMet)
+        {
+            //Insert win screen here
+            Debug.Log("Objective Met");
+        }
     }
 }

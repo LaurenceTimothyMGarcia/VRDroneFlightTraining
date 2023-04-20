@@ -90,9 +90,12 @@ public class DroneController : MonoBehaviour
     public float minThrottleSpeed = 0f;
     public float throttleSpeedIncrement = 10f;
 
-    //Booleans to determine if drone is out of view or not
+    //Booleans to determine if drone is within speed/height limit
     [HideInInspector] public bool speedOver;
     [HideInInspector] public bool heightOver;
+
+    // Drone entered objective
+    [HideInInspector] public bool objectiveMet;
 
     private AudioSource droneSound;//variable for drone sound
 
@@ -330,6 +333,11 @@ public class DroneController : MonoBehaviour
             windZone = colli.gameObject;
             inWindZone = true;
         }
+
+        if (colli.tag == "Objective")
+        {
+            objectiveMet = true;
+        }
     }
 
     void OnTriggerExit(Collider colli)
@@ -337,6 +345,11 @@ public class DroneController : MonoBehaviour
         if (colli.gameObject.tag != "wind area")
         {
             inWindZone = false;
+        }
+
+        if (colli.tag == "Objective")
+        {
+            objectiveMet = false;
         }
     }
 

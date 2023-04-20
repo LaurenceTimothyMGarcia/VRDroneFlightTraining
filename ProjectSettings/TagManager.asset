@@ -8,6 +8,7 @@ TagManager:
   - ground
   - wind area
   - Drone
+  - Objective
   layers:
   - Default
   - TransparentFX
