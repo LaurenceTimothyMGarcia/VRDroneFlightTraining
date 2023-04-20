@@ -443,6 +443,7 @@ MonoBehaviour:
   throttleSpeedIncrement: 10
   speedOver: 0
   heightOver: 0
+  objectiveMet: 0
 --- !u!114 &4432052376963645046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,6 +474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overallScore: 100
-  scoreDecreasePerSec: 1
+  scoreDecreasePerSec: 2
+  passingScore: 70
   currentScore: 0
-  droneState: {fileID: 0}
+  droneState: {fileID: 6990955878230915055}

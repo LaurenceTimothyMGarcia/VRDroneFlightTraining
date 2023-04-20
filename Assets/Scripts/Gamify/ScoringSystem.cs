@@ -6,6 +6,7 @@ public class ScoringSystem : MonoBehaviour
 {
     public float overallScore = 100f;
     public float scoreDecreasePerSec = 1f;
+    public float passingScore = 70f;
 
     [HideInInspector] public float currentScore;
     
