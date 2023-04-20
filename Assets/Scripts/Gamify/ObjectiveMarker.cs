@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ObjectiveMarker : MonoBehaviour
 {
+    public float sphereRad = 25f;
+    
+
     // Start is called before the first frame update
     void Start()
     {

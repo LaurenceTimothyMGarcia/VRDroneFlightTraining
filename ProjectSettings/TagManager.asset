@@ -7,6 +7,7 @@ TagManager:
   - CityGen3D
   - ground
   - wind area
+  - Drone
   layers:
   - Default
   - TransparentFX
