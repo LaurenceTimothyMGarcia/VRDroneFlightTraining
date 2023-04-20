@@ -22,7 +22,7 @@ public class ObjectiveMarker : MonoBehaviour
         if (drone.GetComponent<DroneController>().objectiveMet)
         {
             //Insert win screen here
-            Debug.Log("Objective Met");
+            // Debug.Log("Objective Met");
         }
     }
 }
