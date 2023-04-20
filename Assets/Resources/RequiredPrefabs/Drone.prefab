@@ -437,8 +437,8 @@ MonoBehaviour:
   direction: {fileID: 8317726778153188887}
   droneCamera: {fileID: 500386736496025159}
   vrHeadset: {fileID: 0}
-  regulationSpeedLimit: 100
-  regulationHeightLimit: 400
+  regulationSpeedLimit: 50
+  regulationHeightLimit: 50
   maxThrottleSpeed: 1000
   minThrottleSpeed: 0
   throttleSpeedIncrement: 10
