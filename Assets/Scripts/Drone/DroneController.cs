@@ -174,18 +174,6 @@ public class DroneController : MonoBehaviour
         MoveDrone();
         SpeedControl();
         DroneSound(); //function call for Drone sound in propeller
-        //rotation method (Foward movement needs to be replaced here with the correct command or the tilt method)
-        //Yaw();
-        //rb.rotation = rb.rotation * Quaternion.AngleAxis(yawSpeed * yawInput, Vector3.up);
-
-        // //This code gets the horizontal input from the player (e.g., from the arrow keys or joystick) and rotates the drone around its y-axis based on that input.
-        // float horizontal = Input.GetAxis("Horizontal");
-        // transform.Rotate(0, horizontal * yawSpeed * Time.deltaTime, 0);
-
-        // //This code gets the vertical input from the player (e.g., from the up/down arrow keys or joystick) and calculates the movement vector based on the drone's forward direction and the player's input. It then moves the drone's Rigidbody component in that direction using the MovePosition() function.
-        // float vertical = Input.GetAxis("Vertical");
-        // Vector3 movement = transform.forward * vertical * pitchSpeed * Time.deltaTime;
-        // rb.MovePosition(rb.position + movement);
 
         
         if (inWindZone)
@@ -308,6 +296,8 @@ public class DroneController : MonoBehaviour
         if (value.performed)
         {
             Debug.Log("Button Pressed");
+            Debug.Log("Drone Camera Euler Rotation: " + droneCamera.transform.eulerAngles);
+            Debug.Log("Direction Euler Rotation: " + direction.transform.eulerAngles);
             droneCamera.transform.eulerAngles = direction.transform.eulerAngles;
         }
     }

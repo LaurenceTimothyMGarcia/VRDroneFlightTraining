@@ -369,6 +369,7 @@ GameObject:
   - component: {fileID: 6990955878230915053}
   - component: {fileID: 6990955878230915055}
   - component: {fileID: 4432052376963645046}
+  - component: {fileID: 2375933077026651196}
   m_Layer: 0
   m_Name: Drone
   m_TagString: Untagged
@@ -435,13 +436,13 @@ MonoBehaviour:
   direction: {fileID: 8317726778153188887}
   droneCamera: {fileID: 500386736496025159}
   vrHeadset: {fileID: 0}
-  rollSpeed: 0
-  pitchSpeed: 0
-  yawSpeed: 0
-  throttlePower: 0
+  regulationSpeedLimit: 100
+  regulationHeightLimit: 400
   maxThrottleSpeed: 1000
   minThrottleSpeed: 0
   throttleSpeedIncrement: 10
+  speedOver: 0
+  heightOver: 0
 --- !u!114 &4432052376963645046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,3 +460,18 @@ MonoBehaviour:
   needArrowIndicator: 1
   needDistanceText: 1
   indicator: {fileID: 0}
+--- !u!114 &2375933077026651196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6990955878230915050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73c3fa7c24d8cd418d92a0e6a94c215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overallScore: 100
+  currentScore: 0
+  droneState: {fileID: 0}
