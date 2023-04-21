@@ -408,6 +408,9 @@ public class DroneController : MonoBehaviour
             limitPitch = limitVel.z;
         }
 
+        // Caps speed of drone
+        rb.velocity = new Vector3(limitRoll, limitThrottle, limitPitch);
+
         // When player stops controlling drone
         if (rollInput == 0)
         {
