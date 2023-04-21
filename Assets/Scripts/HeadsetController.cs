@@ -12,7 +12,7 @@ public class HeadsetController : MonoBehaviour
     [SerializeField] private GameObject headset;
     //[SerializeField] private float duration = 1;
     //private Vector3 currentPosition, offsetUp, offsetDown;
-    private bool isLowered = false;
+    public bool isLowered = false;
 
     public void MoveHeadset()
     {

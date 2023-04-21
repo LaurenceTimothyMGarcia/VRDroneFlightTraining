@@ -20174,6 +20174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   headset: {fileID: 1075245271049595517}
+  isLowered: 0
 --- !u!1001 &3035482444555667184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20275,6 +20276,10 @@ PrefabInstance:
       propertyPath: score
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 309118280495865038, guid: 31c20cda9b4dfc347849ffc0ae5714f2, type: 3}
+      propertyPath: vrSet
+      value: 
+      objectReference: {fileID: 7123291819357898692}
     - target: {fileID: 309118280495865039, guid: 31c20cda9b4dfc347849ffc0ae5714f2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

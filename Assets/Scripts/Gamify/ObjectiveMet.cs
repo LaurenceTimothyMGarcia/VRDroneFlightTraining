@@ -8,6 +8,7 @@ public class ObjectiveMet : MonoBehaviour
 {
     public DroneController drone;
     public ScoringSystem score;
+    public HeadsetController vrSet;
 
     public GameObject uiPopUp;
     public Image backgroundCol;
@@ -45,6 +46,11 @@ public class ObjectiveMet : MonoBehaviour
             finalScore.text = "Score: " + score.currentScore.ToString("F0") + "/" + score.overallScore;
 
             uiPopUp.SetActive(true);
+
+            if (vrSet.isLowered)
+            {
+                vrSet.MoveHeadset();
+            }
 
         }
     }

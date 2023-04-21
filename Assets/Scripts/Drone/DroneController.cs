@@ -25,6 +25,10 @@ public class DroneController : MonoBehaviour
     public static float dronespeed = 0;
     public GameObject speedWarning;
 
+    public GameObject buildingHit;
+    public float warningTime = 2f;
+    private float currentWarnTime;
+
 
     [Header("Drone type")]
     public DroneType drone;
@@ -167,7 +171,7 @@ public class DroneController : MonoBehaviour
 
         // VR headset moves in sync with drone cam
         droneCamera.transform.eulerAngles = vrHeadset.transform.eulerAngles;
-
+        WarningTimer();
     }
 
     // Any physics related drone movement goes here
@@ -254,6 +258,25 @@ public class DroneController : MonoBehaviour
         {
             speedWarning.gameObject.SetActive(false);
             speedOver = false;
+        }
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Building"))
+        {
+            currentWarnTime = warningTime;
+            buildingHit.gameObject.SetActive(true);
+        }
+    }
+
+    public void WarningTimer()
+    {
+        currentWarnTime -= Time.deltaTime;
+
+        if (currentWarnTime <= 0)
+        {
+            buildingHit.gameObject.SetActive(false);
         }
     }
 
