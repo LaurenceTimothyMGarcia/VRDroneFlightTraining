@@ -24,4 +24,5 @@ public class windarea : MonoBehaviour
         windStrength = newStrength;
     }
 
+
 }
