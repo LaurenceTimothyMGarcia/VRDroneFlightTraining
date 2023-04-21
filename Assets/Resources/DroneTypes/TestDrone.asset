@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Test Drone
   droneModel: {fileID: 3657813114293492058, guid: 1dba7929c7ac43343a4e871559164858, type: 3}
-  pitchSpeed: 50
-  rollSpeed: 50
+  pitchSpeed: 5
+  rollSpeed: 5
   yawSpeed: 100
-  throttlePower: 50
+  throttlePower: 5
   mass: 2
