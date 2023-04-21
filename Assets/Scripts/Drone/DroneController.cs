@@ -120,9 +120,9 @@ public class DroneController : MonoBehaviour
 
         // Listener for when the controller is held by 2 hands or not
         // COMMENTOUT TESTNOVR
-        grabbableExtraEvents.OnTwoHandedGrab.AddListener(ActivateDroneMovement);
+        /*grabbableExtraEvents.OnTwoHandedGrab.AddListener(ActivateDroneMovement);
         grabbableExtraEvents.OnTwoHandedRelease.AddListener(ActivatePlayerMovement);
-
+*/
         // Wind related variables
         wz = GetComponent<Rigidbody>(); //windarea 
         rb = GetComponent<Rigidbody>();
@@ -307,7 +307,7 @@ public class DroneController : MonoBehaviour
     // If controller is grabbed with 2 hands then player stops moving and drone moves, vice versa
     // COMMENTOUT TESTNOVR
  
-    void ActivateDroneMovement(Hand hand, Grabbable grab)
+    /*void ActivateDroneMovement(Hand hand, Grabbable grab)
     {
         Debug.Log("Two-handed grab detected!");
 
@@ -321,7 +321,7 @@ public class DroneController : MonoBehaviour
 
         InputManager.Instance.playerActions.DroneControls.Disable();
         InputManager.Instance.playerActions.DefaultControls.Enable();
-    }
+    }*/
 
     // Wind related PHysics
     //if enter and exit windarea
@@ -408,6 +408,9 @@ public class DroneController : MonoBehaviour
             limitPitch = limitVel.z;
         }
 
+        // Caps speed of drone
+        rb.velocity = new Vector3(limitRoll, limitThrottle, limitPitch);
+
         // When player stops controlling drone
         if (rollInput == 0)
         {
@@ -476,10 +479,10 @@ public class DroneController : MonoBehaviour
     // Destroys event listener for controller
     // COMMENTOUT TESTNOVR
     
-    public void OnDestroy()
+    /*public void OnDestroy()
     {
         grabbableExtraEvents.OnTwoHandedGrab.RemoveListener(ActivateDroneMovement);
         grabbableExtraEvents.OnTwoHandedRelease.RemoveListener(ActivatePlayerMovement);
-    }
+    }*/
     
 }
