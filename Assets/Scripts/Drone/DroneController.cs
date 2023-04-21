@@ -80,7 +80,7 @@ public class DroneController : MonoBehaviour
     private Vector3 currentDirection;
     private float currentRollSpeed;
     private float currentPitchSpeed;
-    private float currentYawSpeed;
+    public float currentYawSpeed;
     private float currentThrottlePower = 0f; //added initilization
     private Rigidbody rb;
     private GameObject droneModel;
@@ -257,8 +257,6 @@ public class DroneController : MonoBehaviour
         }
     }
 
-    //
-
     public void OnRightStick(InputAction.CallbackContext value)
     {
         if (value.performed)
@@ -308,6 +306,7 @@ public class DroneController : MonoBehaviour
     // Drone movement detection if controller has been grabbed or not
     // If controller is grabbed with 2 hands then player stops moving and drone moves, vice versa
     // COMMENTOUT TESTNOVR
+ 
     void ActivateDroneMovement(Hand hand, Grabbable grab)
     {
         Debug.Log("Two-handed grab detected!");
@@ -476,9 +475,11 @@ public class DroneController : MonoBehaviour
 
     // Destroys event listener for controller
     // COMMENTOUT TESTNOVR
+    
     public void OnDestroy()
     {
         grabbableExtraEvents.OnTwoHandedGrab.RemoveListener(ActivateDroneMovement);
         grabbableExtraEvents.OnTwoHandedRelease.RemoveListener(ActivatePlayerMovement);
     }
+    
 }
