@@ -9,20 +9,32 @@ using UnityEngine;
 
 public class HeadsetController : MonoBehaviour
 {
+    public Camera playerDisplay;
+    public Camera vrDisplay;
     [SerializeField] private GameObject headset;
     //[SerializeField] private float duration = 1;
     //private Vector3 currentPosition, offsetUp, offsetDown;
     public bool isLowered = false;
+
+    public void Awake()
+    {
+        playerDisplay.enabled = true;
+        vrDisplay.enabled = false;
+    }
 
     public void MoveHeadset()
     {
         if (!isLowered)
         {
             transform.Translate(0f, -0.25f, 0f);
+            playerDisplay.enabled = true;
+            vrDisplay.enabled = false;
         }
         else
         {
             transform.Translate(0f, 0.25f, 0f);
+            playerDisplay.enabled = false;
+            vrDisplay.enabled = true;
         }
         isLowered = !isLowered;
     }
