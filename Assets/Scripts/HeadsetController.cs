@@ -29,16 +29,16 @@ public class HeadsetController : MonoBehaviour
         if (!isLowered)
         {
             transform.Translate(0f, -0.25f, 0f);
-            playerDisplay.enabled = true;
-            vrDisplay.enabled = false;
-            headsetFilm.SetActive(false);
+            playerDisplay.enabled = false;
+            vrDisplay.enabled = true;
+            headsetFilm.SetActive(true);
         }
         else
         {
             transform.Translate(0f, 0.25f, 0f);
-            playerDisplay.enabled = false;
-            vrDisplay.enabled = true;
-            headsetFilm.SetActive(true);
+            playerDisplay.enabled = true;
+            vrDisplay.enabled = false;
+            headsetFilm.SetActive(false);
         }
         isLowered = !isLowered;
     }
