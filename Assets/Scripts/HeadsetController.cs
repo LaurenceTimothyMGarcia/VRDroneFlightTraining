@@ -11,6 +11,7 @@ public class HeadsetController : MonoBehaviour
 {
     public Camera playerDisplay;
     public Camera vrDisplay;
+    public GameObject headsetFilm;
     [SerializeField] private GameObject headset;
     //[SerializeField] private float duration = 1;
     //private Vector3 currentPosition, offsetUp, offsetDown;
@@ -20,6 +21,7 @@ public class HeadsetController : MonoBehaviour
     {
         playerDisplay.enabled = true;
         vrDisplay.enabled = false;
+        headsetFilm.SetActive(false);
     }
 
     public void MoveHeadset()
@@ -29,12 +31,14 @@ public class HeadsetController : MonoBehaviour
             transform.Translate(0f, -0.25f, 0f);
             playerDisplay.enabled = true;
             vrDisplay.enabled = false;
+            headsetFilm.SetActive(false);
         }
         else
         {
             transform.Translate(0f, 0.25f, 0f);
             playerDisplay.enabled = false;
             vrDisplay.enabled = true;
+            headsetFilm.SetActive(true);
         }
         isLowered = !isLowered;
     }
