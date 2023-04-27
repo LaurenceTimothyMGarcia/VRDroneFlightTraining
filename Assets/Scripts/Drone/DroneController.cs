@@ -170,7 +170,7 @@ public class DroneController : MonoBehaviour
         height = (float)(height * 3.28084);
 
         // VR headset moves in sync with drone cam
-        droneCamera.transform.eulerAngles = vrHeadset.transform.eulerAngles;
+        droneCamera.transform.eulerAngles = vrHeadset.transform.eulerAngles + this.transform.eulerAngles;
         WarningTimer();
     }
 

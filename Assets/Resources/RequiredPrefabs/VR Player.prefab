@@ -20175,6 +20175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDisplay: {fileID: 4400211150216581971}
   vrDisplay: {fileID: 4400211150216581971}
+  headsetFilm: {fileID: 0}
   headset: {fileID: 1075245271049595517}
   isLowered: 0
 --- !u!1001 &3035482444555667184

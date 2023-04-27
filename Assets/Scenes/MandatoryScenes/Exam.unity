@@ -876,6 +876,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7123291819357898692, guid: 13098a7b27d411745ae5d9a9ad81ab52, type: 3}
+      propertyPath: vrDisplay
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13098a7b27d411745ae5d9a9ad81ab52, type: 3}
 --- !u!1 &1169372632
