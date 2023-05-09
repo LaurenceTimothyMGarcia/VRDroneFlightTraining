@@ -32,6 +32,9 @@ public class HeadsetController : MonoBehaviour
             playerDisplay.enabled = false;
             vrDisplay.enabled = true;
             headsetFilm.SetActive(true);
+
+            InputManager.Instance.playerActions.DefaultControls.Disable();
+            InputManager.Instance.playerActions.DroneControls.Enable();
         }
         else
         {
@@ -39,6 +42,9 @@ public class HeadsetController : MonoBehaviour
             playerDisplay.enabled = true;
             vrDisplay.enabled = false;
             headsetFilm.SetActive(false);
+
+            InputManager.Instance.playerActions.DefaultControls.Enable();
+            InputManager.Instance.playerActions.DroneControls.Disable();
         }
         isLowered = !isLowered;
     }
